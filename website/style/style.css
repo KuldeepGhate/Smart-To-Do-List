@@ -1,0 +1,93 @@
+* {
+    font-weight: normal;
+    font-family: sans-serif;
+    text-decoration: none;
+}
+
+a {
+    color: black;
+}
+
+.wallpaper {
+    background-color: #7BAAF7;
+}
+
+#container {
+    margin: 5% 5%;
+}
+
+#header {
+    text-align: center;
+}
+
+#content {
+    min-height: 550px;
+}
+
+#todo {
+    margin-left: 10%;
+}
+
+#todo input {
+    margin-bottom: 30px;
+}
+
+#todo form a {
+    margin-left: 1%;
+    padding: 1%;
+    font-weight: bold;
+    color: black;
+    border: 2px solid black;
+    border-radius: 100%;
+}
+
+#todo label {
+    border: 2px solid black;
+    padding-right: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+#todo .tag {
+    display: inline-block;
+    margin-left: 1%;
+    padding: 5px;
+    border-radius: 10%;
+    border: 2px solid black;
+}
+
+#todo .general {
+    background-color: white;
+}
+
+#todo .school {
+    background-color: crimson;
+}
+
+#todo .work {
+    background-color: greenyellow;
+}
+
+#todo .life {
+    background-color: #7BAAF7;
+}
+
+.finished {
+    background-color: forestgreen;
+}
+
+.critical {
+    background-color: red;
+}
+
+.normal {
+    background-color: gray;
+}
+
+.unimportant {
+    background-color: #7BAAF7;
+}
+
+#footer {
+    text-align: center;
+}
