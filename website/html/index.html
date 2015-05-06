@@ -14,11 +14,11 @@
     <div id="container">
         <div id="header">
             <h1 class="big-heading">The Best TODO List</h1>
-        </div>  
+        </div>
+
         <div id="content">
             <div id="todo">
                 <h2 class="medium-heading">List items</h2>
-              
                 <table id="myTable" cellspacing='0'> <!-- cellspacing='0' is important, must stay -->
 					<tr><th>Task Details</th></tr> <!-- Table Header -->
 				    
@@ -35,7 +35,7 @@
 				    <tr class='even'><td>Hyperlink Example</td></tr>
 				</table>
 				<!--<input type="button" value="Add" id="add">-->
-				<a href="#" class="add">blue</a>
+                <a href="#" class="add">Add item</a>
             </div>
         </div>
 
@@ -45,17 +45,14 @@
 				<!-- <img id="close" src="background.jpg" onclick ="div_hide()"> -->
 				<h2>Task Manager</h2>
 				<hr>
-				<label>Task: </label><input id="task" name="task" placeholder="Task" type="text">
-				<br><br>
-				<label>Day:
-				<select name="mydropdown">
+            <label>Task: <input id="task" name="task" placeholder="Task" type="text"></label><br><br>
+            <label>Day: <select name="mydropdown">
 					<option value="Milk">Monday</option>
 					<option value="Cheese">Tuesday</option>
 					<option value="Bread">Wednesday</option>
 				</select></label><br><br>
 				<label>Time: <input type="time" name="usr_time"></label><br><br>
 				<button class="add" type="button" onclick="exec()">Send</button>
-
 			</form> 
 		</div> <!--/Form Div-->
 
