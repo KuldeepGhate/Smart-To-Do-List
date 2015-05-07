@@ -1,4 +1,4 @@
- * {
+* {
     font-weight: normal;
     font-family: sans-serif;
     text-decoration: none;
@@ -8,7 +8,28 @@ a {
     color: black;
 }
 
-.big-heading{
+a:link {
+    color: #666;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+a:visited {
+    color: #666;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+a:active, a:hover {
+    color: #bd5a35;
+    text-decoration: underline;
+}
+
+h2 {
+    text-align: center;
+}
+
+.big-heading {
     color: #CEF0D4; 
     font-family: 'Rouge Script', cursive; 
     font-size: 80px; 
@@ -19,12 +40,26 @@ a {
     text-shadow: 1px 1px 2px #082b34;
 }
 
-/*.big-heading{
-    color: #fff; font-family: 'Righteous', cursive; font-size: 65px; font-weight: normal; line-height: 60px; margin: 10px 0 20px; text-transform: uppercase; text-shadow: 2px 2px 0 #000, margin: 10px 0 24px; text-align: center;
-    }*/
-/*.big-heading{
-    color: #d04764; font-family: 'Lobster', cursive; font-size: 36px; font-weight: normal; line-height: 48px; margin: 0 0 18px; text-shadow: 1px 0 0 #fff;
-}    */
+/* .big-heading {
+    color: #fff; font-family: 'Righteous', cursive;
+    font-size: 65px;
+    font-weight: normal;
+    line-height: 60px;
+    margin: 10px 0 20px;
+    text-transform: uppercase;
+    text-shadow: 2px 2px 0 #000, margin: 10px 0 24px;
+    text-align: center;
+} */
+
+/* .big-heading {
+    color: #d04764;
+    font-family: 'Lobster', cursive;
+    font-size: 36px;
+    font-weight: normal;
+    line-height: 48px; margin: 0 0 18px;
+    text-shadow: 1px 0 0 #fff;
+} */
+
 .wallpaper {
     background-image: url("../resources/noisy-background.png");
 }
@@ -109,41 +144,27 @@ a {
     text-align: center;
 }
 
-a:link {
-    color: #666;
-    font-weight: bold;
-    text-decoration:none;
-}
-a:visited {
-    color: #666;
-    font-weight:bold;
-    text-decoration:none;
-}
-a:active,
-a:hover {
-    color: #bd5a35;
-    text-decoration:underline;
-}
-
-
-/*----------------------------------------------------------------
+/* ---------------------------------------------------------------
 Table Style
 ------------------------------------------------------------------ */
+
 table a:link {
     color: #666;
     font-weight: bold;
     text-decoration:none;
 }
+
 table a:visited {
     color: #999999;
     font-weight:bold;
     text-decoration:none;
 }
-table a:active,
-table a:hover {
+
+table a:active, table a:hover {
     color: #bd5a35;
     text-decoration:underline;
 }
+
 table {
     font-family:Arial, Helvetica, sans-serif;
     color:#666;
@@ -161,6 +182,7 @@ table {
     -webkit-box-shadow: 0 1px 2px #d1d1d1;
     box-shadow: 0 1px 2px #d1d1d1;
 }
+
 table th {
     padding:21px 25px 22px 25px;
     border-top:1px solid #fafafa;
@@ -171,20 +193,23 @@ table th {
     background: -moz-linear-gradient(top,  #ededed,  #ebebeb);
 }
 
-table tr:first-child th:last-child{
+table tr:first-child th:last-child {
     -moz-border-radius-topright:3px;
     -webkit-border-top-right-radius:30px;
     border-top-right-radius:3px;
-    border-top-left-radius:3px;   
+    border-top-left-radius: 3px;
 }
-table tr{
+
+table tr {
     text-align: center;
     padding-left:20px;
 }
-table tr td:first-child{
+
+table tr td:first-child {
     text-align: left;
     padding-left:20px;
 }
+
 table tr td {
     padding:18px;
     border-top: 1px solid #ffffff;
@@ -195,19 +220,19 @@ table tr td {
     background: -moz-linear-gradient(top,  #fbfbfb,  #fafafa);
 }
 
-
-table tr:last-child td:first-child{
+table tr:last-child td:first-child {
     -moz-border-radius-bottomleft:3px;
     -webkit-border-bottom-left-radius:3px;
     border-bottom-left-radius:3px;
 }
 
-table tr:last-child td:last-child{
+table tr:last-child td:last-child {
     -moz-border-radius-bottomright:3px;
     -webkit-border-bottom-right-radius:3px;
     border-bottom-right-radius:3px;
 }
-table tr:hover td{
+
+table tr:hover td {
     background: #f2f2f2;
     background: -webkit-gradient(linear, left top, left bottom, from(#64b5f6), to(#f0f0f0));
     background: -moz-linear-gradient(top,  #f2f2f2,  #f0f0f0);  
@@ -254,7 +279,3 @@ table tr:hover td{
     position:relative;
     top:1px;
 }
-
-h2{
-    text-align: center;
- }
