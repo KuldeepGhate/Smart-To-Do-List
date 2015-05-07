@@ -1,15 +1,16 @@
-$(document).ready(function(){
+$(document).ready(function () {
     $("#hello").dialog({autoOpen: false,
         maxHeight: 600,
         maxWidth: 600,
         height: 600,
         width: 600
     });
-    $(".add").click(function(){
+    $(".add").click(function () {
         $("#hello").dialog("open");
     });
 });
-function exec(){
+
+function exec() {
     $("#hello").dialog("close");
     var table = document.getElementById("myTable");
     var row = table.insertRow(-1);
