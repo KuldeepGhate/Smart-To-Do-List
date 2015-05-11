@@ -1,38 +1,62 @@
 function TasksAndTags() {
-    this.allTasks = [];
-    this.currentList = this.allTasks;
-    this.allTags = [];
+    this.tasksCount = 0;
+    this.tagsCount = 0;
+
+    this.tasksAll = [];
+    this.tagsAll = [];
+    this.currentList = this.tasksAll;
 
     this.addTask = function (task) {
-        this.allTasks.push(task);
+        this.tasksAll.push(task);
+        this.tasksCount++;
     };
 
     this.addTag = function (tag) {
-        this.allTags.push(tag);
+        this.tagsAll.push(tag);
+        this.tagsCount++;
+    };
+
+    this.hasTag = function (type) {
+        for (var tagIndex = 0; tagIndex < this.tagsCount; tagIndex++) {
+            if (this.tagsAll[tagIndex].match(type)) {
+                return tagIndex;
+            }
+        }
+        return -1;
     };
 
     this.switchList = function (type) {
         if (type == "default") {
-            this.currentList = this.allTasks;
+            this.currentList = this.tasksAll;
         }
         else {
-            for (var i = 0; i < this.allTags.length; i++) {
-                if (this.allTags[i].match(type)) {
-                    this.createList(this.allTags[i]);
-                }
+            var tagIndex;
+            if ((tagIndex = this.hasTag(type)) >= 0) {
+                this.createList(this.tagsAll[tagIndex]);
             }
         }
     };
 
     this.createList = function (tag) {
-        this.currentList = [];
-        for (var i = 0; i < this.allTasks.length; i++) {
-            for (var j = 0; j < this.allTasks[i].tags.length; j++) {
-                if (this.allTasks[i].tags[j].match(tag)) {
-                    this.currentList.push(this.allTasks[i])
+        var newList = [];
+        for (var i = 0; i < this.tasksCount; i++) {
+            if (typeof(this.tasksAll[i].tags.length) == "undefined") {
+                console.log("undefined: " + i)
+                if (this.tasksAll[i].tags.match(tag)) {
+                    newList.push(this.tasksAll[i]);
+                }
+            }
+            else {
+                for (var j = 0; j < this.tasksAll[i].tagsCount - 1; j++) {
+                    console.log("defined: " + i + " " + j);
+                    if (this.tasksAll[i].tags[j].match(tag)) {
+                        newList.push(this.tasksAll[i]);
+                    }
                 }
             }
         }
+        this.currentList = [];
+        this.currentList = newList;
     };
 }
 
@@ -40,8 +64,16 @@ function Task(taskName, taskDescription, priority, tags, dueDate) {
     this.taskName = taskName;
     this.taskDescription = taskDescription;
     this.priority = priority;
-    this.tags = tags;
     this.dueDate = dueDate;
+    this.tags = tags;
+    this.tagsCount = null;
+
+    if (typeof(this.tags.length) == "undefined") {
+        this.tagsCount = 0;
+    }
+    else {
+        this.tagsCount = this.tags.length;
+    }
 }
 
 function Tag(tagName, tagColor) {
@@ -49,7 +81,19 @@ function Tag(tagName, tagColor) {
     this.tagColor = tagColor;
 
     this.match = function (tag) {
-        return this.tagName.match(tag.name);
+        if (typeof(tag) == "string") {
+            var matches = this.tagName.match(tag);
+            if (matches == tag) {
+                return true;
+            }
+        }
+        else {
+            var matches = this.tagName.match(tag.name);
+            if (matches[2] == tag.tagName) {
+                return true;
+            }
+        }
+        return false;
     }
 }
 
@@ -72,9 +116,7 @@ function taskExample() {
     masterList.addTask(task2);
     masterList.addTask(task3);
 
-    console.log(masterList);
-
     masterList.switchList("school");
 
-    console.log(masterList.currentList);
+    console.log(masterList);
 }
