@@ -1,22 +1,42 @@
+/**
+ * This object stores the master lists of tasks and tags
+ */
 function TasksAndTags() {
-    this.listState = "default";
     this.tasksCount = 0;
     this.tagsCount = 0;
 
     this.tasksAll = [];
     this.tagsAll = [];
     this.currentList = this.tasksAll;
+    this.listState = "default";
 
+    /**
+     * Adds a task to the main task list
+     *
+     * @param task
+     */
     this.addTask = function (task) {
         this.tasksAll.push(task);
         this.tasksCount++;
     };
 
+    /**
+     * Adds a tag to the main tag list
+     *
+     * @param tag
+     */
     this.addTag = function (tag) {
         this.tagsAll.push(tag);
         this.tagsCount++;
     };
 
+    /**
+     * Checks if a tag exists
+     *
+     * @param type
+     * @returns {number}: 0+ the index of the tag if it is there
+     *                    -1 there was no match
+     */
     this.hasTag = function (type) {
         for (var tagIndex = 0; tagIndex < this.tagsCount; tagIndex++) {
             if (this.tagsAll[tagIndex].match(type)) {
@@ -26,18 +46,32 @@ function TasksAndTags() {
         return -1;
     };
 
-    this.switchList = function (type) {
-        if (type == "default") {
+    /**
+     * Switches the list to another tag or to the default view
+     *
+     * @param state: a string, the desired state of the currentList
+     */
+    this.switchList = function (state) {
+        if (this.listState == state) {
+            return;
+        }
+        else if (state == "default") {
             this.currentList = this.tasksAll;
         }
         else {
             var tagIndex;
-            if ((tagIndex = this.hasTag(type)) >= 0) {
+            if ((tagIndex = this.hasTag(state)) >= 0) {
                 this.createList(this.tagsAll[tagIndex]);
             }
         }
+        this.listState = state;
     };
 
+    /**
+     * For internal use, is called from switchList
+     *
+     * @param tag the tag that the currentList is switching to
+     */
     this.createList = function (tag) {
         var newList = [];
         for (var i = 0; i < this.tasksCount; i++) {
@@ -59,6 +93,16 @@ function TasksAndTags() {
     };
 }
 
+/**
+ * This is the task object
+ *
+ * @param taskName
+ * @param taskDescription
+ * @param priority
+ * @param tags
+ * @param dueDate
+ * @constructor
+ */
 function Task(taskName, taskDescription, priority, tags, dueDate) {
     this.taskName = taskName;
     this.taskDescription = taskDescription;
@@ -75,10 +119,23 @@ function Task(taskName, taskDescription, priority, tags, dueDate) {
     }
 }
 
+/**
+ * This is the tag object
+ *
+ * @param tagName
+ * @param tagColor
+ * @constructor
+ */
 function Tag(tagName, tagColor) {
     this.tagName = tagName;
     this.tagColor = tagColor;
 
+    /**
+     * Returns whether or not a tag matches another
+     *
+     * @param tag can pass either a string or a tag
+     * @returns {boolean}
+     */
     this.match = function (tag) {
         if (typeof(tag) == "string") {
             var matches = this.tagName.match(tag);
@@ -87,7 +144,7 @@ function Tag(tagName, tagColor) {
             }
         }
         else {
-            var matches = this.tagName.match(tag.tagName);
+            matches = this.tagName.match(tag.tagName);
             if (matches == tag.tagName) {
                 return true;
             }
@@ -133,7 +190,11 @@ function tasksAndTagsTest() {
 
     console.log(masterList.currentList);
 
-    masterList.switchList("default");
+    masterList.switchList("life");
 
     console.log(masterList.currentList);
+
+    masterList.switchList("default");
+
+    console.log(masterList);
 }
