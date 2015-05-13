@@ -1,7 +1,7 @@
 /**
  * This object stores the master lists of tasks and tags
  */
-function TasksAndTags() {
+function TasksLists() {
     this.tasksCount = 0;
     this.tagsCount = 0;
 
@@ -91,66 +91,6 @@ function TasksAndTags() {
         this.currentList = [];
         this.currentList = newList;
     };
-}
-
-/**
- * This is the task object
- *
- * @param taskName
- * @param taskDescription
- * @param priority
- * @param tags
- * @param dueDate
- * @constructor
- */
-function Task(taskName, taskDescription, priority, tags, dueDate) {
-    this.taskName = taskName;
-    this.taskDescription = taskDescription;
-    this.priority = priority;
-    this.dueDate = dueDate;
-    this.tags = tags;
-    this.tagsCount = null;
-
-    if (typeof(this.tags.length) == "undefined") {
-        this.tagsCount = 0;
-    }
-    else {
-        this.tagsCount = this.tags.length;
-    }
-}
-
-/**
- * This is the tag object
- *
- * @param tagName
- * @param tagColor
- * @constructor
- */
-function Tag(tagName, tagColor) {
-    this.tagName = tagName;
-    this.tagColor = tagColor;
-
-    /**
-     * Returns whether or not a tag matches another
-     *
-     * @param tag can pass either a string or a tag
-     * @returns {boolean}
-     */
-    this.match = function (tag) {
-        if (typeof(tag) == "string") {
-            var matches = this.tagName.match(tag);
-            if (matches == tag) {
-                return true;
-            }
-        }
-        else {
-            matches = this.tagName.match(tag.tagName);
-            if (matches == tag.tagName) {
-                return true;
-            }
-        }
-        return false;
-    }
 }
 
 function tasksAndTagsTest() {
