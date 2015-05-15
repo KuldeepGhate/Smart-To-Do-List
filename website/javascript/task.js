@@ -4,7 +4,7 @@
  * @param taskName
  * @param taskDescription
  * @param priority
- * @param tags
+ * @param tags: Needs to be an array, even if it is only one tag being passed in
  * @param dueDate
  * @constructor
  */
@@ -14,12 +14,6 @@ function Task(taskName, taskDescription, priority, tags, dueDate) {
     this.priority = priority;
     this.dueDate = dueDate;
     this.tags = tags;
-    this.tagsCount = null;
-
-    if (typeof(this.tags.length) == "undefined") {
-        this.tagsCount = 0;
-    }
-    else {
-        this.tagsCount = this.tags.length;
-    }
+    this.tagsCount = tags.length;
+    this.id = -1;
 }

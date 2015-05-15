@@ -2,11 +2,14 @@
  * This object stores the master lists of tasks and tags
  */
 function TasksLists() {
-    this.tasksCount = 0;
+    this.idCount = 0;
+    this.taskCount = 0;
     this.tagsCount = 0;
 
     this.tasksAll = [];
+    this.tasksDone = [];
     this.tagsAll = [];
+
     this.currentList = this.tasksAll;
     this.listState = "default";
 
@@ -17,7 +20,25 @@ function TasksLists() {
      */
     this.addTask = function (task) {
         this.tasksAll.push(task);
-        this.tasksCount++;
+        task.id = this.idCount;
+        this.idCount++;
+        this.taskCount++;
+    };
+
+    /**
+     * Moves a task to the done list based on its id
+     *
+     * @param taskId
+     */
+    this.finishTask = function (taskId) {
+        for (var i = 0; i < this.tasksAll.length; i++) {
+            if (this.tasksAll[i].id == taskId) {
+                this.tasksDone.push(this.tasksAll.splice(i, 1)[0]);
+                break;
+            }
+        }
+        this.taskCount--;
+        this.switchList(this.listState);
     };
 
     /**
@@ -52,10 +73,7 @@ function TasksLists() {
      * @param state: a string, the desired state of the currentList
      */
     this.switchList = function (state) {
-        if (this.listState == state) {
-            return;
-        }
-        else if (state == "default") {
+        if (state == "default") {
             this.currentList = this.tasksAll;
         }
         else {
@@ -74,7 +92,7 @@ function TasksLists() {
      */
     this.createList = function (tag) {
         var newList = [];
-        for (var i = 0; i < this.tasksCount; i++) {
+        for (var i = 0; i < this.taskCount; i++) {
             if (typeof(this.tasksAll[i].tags.length) == "undefined") {
                 if (this.tasksAll[i].tags.match(tag)) {
                     newList.push(this.tasksAll[i]);
@@ -91,50 +109,4 @@ function TasksLists() {
         this.currentList = [];
         this.currentList = newList;
     };
-}
-
-function TasksListsTest() {
-    var tag1 = new Tag("school", "red");
-    var tag2 = new Tag("work", "green");
-    var tag3 = new Tag("life", "blue");
-
-    var task1 = new Task("run", "running sucks", "urgent", tag1, 201505061213);
-    var task2 = new Task("homework", "homework sucks", "important", [tag3, tag2], 201505312121);
-    var task3 = new Task("fun", "fun is good", "default", [tag1, tag3], 201505061213);
-
-    var masterList = new TasksLists();
-
-    masterList.addTag(tag1);
-    masterList.addTag(tag2);
-    masterList.addTag(tag3);
-
-    masterList.addTask(task1);
-    masterList.addTask(task2);
-    masterList.addTask(task3);
-
-    console.log(masterList.currentList);
-
-    masterList.switchList("work");
-
-    console.log(masterList.currentList);
-
-    masterList.switchList("default");
-
-    console.log(masterList.currentList);
-
-    masterList.switchList("school");
-
-    console.log(masterList.currentList);
-
-    masterList.switchList("life");
-
-    console.log(masterList.currentList);
-
-    masterList.switchList("life");
-
-    console.log(masterList.currentList);
-
-    masterList.switchList("default");
-
-    console.log(masterList);
 }
