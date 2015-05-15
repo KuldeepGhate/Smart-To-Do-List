@@ -115,15 +115,9 @@ function TasksLists() {
         if (this.allTasks.length < 2) {
             return;
         }
-
-        console.log(this.allTasks);
-
         for (var i = this.allTasks.length - 1; i >= 0; i--) {
-            console.log("inside i: " + i);
             for (var j = i - 1; j >= 0; j--) {
-                console.log("inside j: " + j);
                 if (this.allTasks[i].priority > this.allTasks[j].priority) {
-                    console.log("rearranging");
                     var temp = this.allTasks[i];
                     this.allTasks[i] = this.allTasks[j];
                     this.allTasks[j] = temp;
