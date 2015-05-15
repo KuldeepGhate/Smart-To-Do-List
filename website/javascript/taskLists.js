@@ -6,11 +6,11 @@ function TasksLists() {
     this.taskCount = 0;
     this.tagsCount = 0;
 
-    this.tasksAll = [];
-    this.tasksDone = [];
-    this.tagsAll = [];
+    this.allTasks = [];
+    this.doneTasks = [];
+    this.allTags = [];
 
-    this.currentList = this.tasksAll;
+    this.currentList = this.allTasks;
     this.listState = "default";
 
     /**
@@ -19,10 +19,11 @@ function TasksLists() {
      * @param task
      */
     this.addTask = function (task) {
-        this.tasksAll.push(task);
+        this.allTasks.push(task);
         task.id = this.idCount;
         this.idCount++;
         this.taskCount++;
+        this.sortAll();
     };
 
     /**
@@ -31,9 +32,9 @@ function TasksLists() {
      * @param taskId
      */
     this.finishTask = function (taskId) {
-        for (var i = 0; i < this.tasksAll.length; i++) {
-            if (this.tasksAll[i].id == taskId) {
-                this.tasksDone.push(this.tasksAll.splice(i, 1)[0]);
+        for (var i = 0; i < this.allTasks.length; i++) {
+            if (this.allTasks[i].id == taskId) {
+                this.doneTasks.push(this.allTasks.splice(i, 1)[0]);
                 break;
             }
         }
@@ -47,7 +48,7 @@ function TasksLists() {
      * @param tag
      */
     this.addTag = function (tag) {
-        this.tagsAll.push(tag);
+        this.allTags.push(tag);
         this.tagsCount++;
     };
 
@@ -60,7 +61,7 @@ function TasksLists() {
      */
     this.hasTag = function (type) {
         for (var tagIndex = 0; tagIndex < this.tagsCount; tagIndex++) {
-            if (this.tagsAll[tagIndex].match(type)) {
+            if (this.allTags[tagIndex].match(type)) {
                 return tagIndex;
             }
         }
@@ -74,12 +75,12 @@ function TasksLists() {
      */
     this.switchList = function (state) {
         if (state == "default") {
-            this.currentList = this.tasksAll;
+            this.currentList = this.allTasks;
         }
         else {
             var tagIndex;
             if ((tagIndex = this.hasTag(state)) >= 0) {
-                this.createList(this.tagsAll[tagIndex]);
+                this.createList(this.allTags[tagIndex]);
             }
         }
         this.listState = state;
@@ -88,25 +89,46 @@ function TasksLists() {
     /**
      * For internal use, is called from switchList
      *
-     * @param tag the tag that the currentList is switching to
+     * @param tag: the tag that the currentList is switching to
      */
     this.createList = function (tag) {
         var newList = [];
         for (var i = 0; i < this.taskCount; i++) {
-            if (typeof(this.tasksAll[i].tags.length) == "undefined") {
-                if (this.tasksAll[i].tags.match(tag)) {
-                    newList.push(this.tasksAll[i]);
+            if (typeof(this.allTasks[i].tags.length) == "undefined") {
+                if (this.allTasks[i].tags.match(tag)) {
+                    newList.push(this.allTasks[i]);
                 }
             }
             else {
-                for (var j = 0; j < this.tasksAll[i].tagsCount; j++) {
-                    if (this.tasksAll[i].tags[j].match(tag)) {
-                        newList.push(this.tasksAll[i]);
+                for (var j = 0; j < this.allTasks[i].tagsCount; j++) {
+                    if (this.allTasks[i].tags[j].match(tag)) {
+                        newList.push(this.allTasks[i]);
                     }
                 }
             }
         }
         this.currentList = [];
         this.currentList = newList;
+    };
+
+    this.sortAll = function () {
+        if (this.allTasks.length < 2) {
+            return;
+        }
+
+        console.log(this.allTasks);
+
+        for (var i = this.allTasks.length - 1; i >= 0; i--) {
+            console.log("inside i: " + i);
+            for (var j = i - 1; j >= 0; j--) {
+                console.log("inside j: " + j);
+                if (this.allTasks[i].priority > this.allTasks[j].priority) {
+                    console.log("rearranging");
+                    var temp = this.allTasks[i];
+                    this.allTasks[i] = this.allTasks[j];
+                    this.allTasks[j] = temp;
+                }
+            }
+        }
     };
 }
