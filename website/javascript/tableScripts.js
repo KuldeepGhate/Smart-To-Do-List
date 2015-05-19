@@ -53,12 +53,16 @@ $(document).ready(function () {
             $("<br/>"),$("<br/>"),
 
             //Button
-            $("<button class:'add' type:'button' onclick:exec() >Add</button>").click(
+            $("<button class:'add' type:'button' >Add</button>").click(
                 function(){
+                    var x = document.createElement("INPUT");
+                    x.setAttribute("type", "checkbox");
+                    x.setAttribute("id", "checkbox"+taskNumber);
                     var table = document.getElementById("myTable");
                     var row = table.insertRow(-1);
                     var cell1 = row.insertCell(-1);
                     var cell2 = row.insertCell(-1);
+                    row.appendChild(x);
                     cell1.innerHTML = $("#task"+taskNumber).val();
                     cell2.innerHTML = $("#tag"+taskNumber).val();
                     $("#form").dialog("close");
@@ -67,6 +71,19 @@ $(document).ready(function () {
             )//click
         )//append
 
+    });
+    
+    $(".remove").click(function(){
+        $('#myTable tr').each(function(i,row){
+           //Reference all the stuff I need
+         
+            var $row = $(row),
+                $check = $row.find('input:checked');
+
+            $check.each(function(i, checkbox){
+               $(row).remove();
+            });
+        });
     });
     $(function() {
             $( "#datepicker" ).datepicker();

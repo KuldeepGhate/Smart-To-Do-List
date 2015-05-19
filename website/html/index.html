@@ -26,15 +26,28 @@
         </div>
 
         <div id="content">
+                    <h2 class="medium-heading">List items</h2>
             <div id="todo">
-                <h2 class="medium-heading">List items</h2>
-                <table id="myTable" cellspacing='0'> <!-- cellspacing='0' is important, must stay -->
-					<tr><th>Task Details</th> <!-- Table Header -->
-				        <th>Tags</th></tr>
-					
-				</table>
-				<!--<input type="button" value="Add" id="add">-->
+                <div id="divTasksTable">
+                    <table id="myTable" cellspacing='0'> <!-- cellspacing='0' is important, must stay -->
+    					<tr><th>Task Details</th> <!-- Table Header -->
+    				        <th>Tags</th></tr>					
+                    </table>
+                </div>
+
+
+                <div id ="divFinishedTable">                    
+                    <table id="finishedTasks" cellspacing='0'> <!-- cellspacing='0' is important, must stay -->
+                        <tr>
+                            <th>Select</th>
+                            <th>Finshed Tasks</th> <!-- Table Header -->
+                            <th>Tags</th>
+                        </tr>
+                        
+                    </table>
+                </div>
                 <a href="#" class="add">Add item</a>
+                <a href="#" class="remove">Remove item</a>
             </div>
         </div>
 
