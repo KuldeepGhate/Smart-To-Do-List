@@ -1,7 +1,8 @@
-function TasksListsTest() {
+/* function TasksListsTest() {
     var tag1 = new Tag("school", "red");
     var tag2 = new Tag("work", "green");
     var tag3 = new Tag("life", "blue");
+ var tag4 = new Tag("food", "brown");
 
     var task1 = new Task("run", "running sucks", [tag1], null);
     var task2 = new Task("homework", "homework sucks", [tag3, tag2], null);
@@ -28,16 +29,26 @@ function TasksListsTest() {
     masterList.addTask(task7);
     masterList.addTask(task8);
 
-    console.log(masterList);
-
     masterList.switchList("work");
 
     console.log(masterList.currentList);
-    console.log(masterList.listState);
 
     masterList.finishTask(5);
     masterList.finishTask(3);
 
-    console.log(masterList);
+ console.log(masterList.currentList);
 
-}
+ } */
+
+/* Setting up reference variables for adding stuff to the table */
+var masterList = new TasksLists();
+
+var newTaskName;
+var newTaskDescription;
+var newDueDate;
+
+var newTagName;
+var newTagColor;
+
+var newTask;
+var newTag;

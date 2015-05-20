@@ -14,8 +14,6 @@ function Task(taskName, taskDescription, tags, dueDate) {
     this.priority = setPriority(this);
     this.tags = tags;
     this.tagsCount = tags.length;
-
-    console.log(this);
 }
 
 var PriorityEnum = {

@@ -24,6 +24,8 @@ function TasksLists() {
         this.idCount++;
         this.taskCount++;
         this.sortAll();
+        this.switchList(this.listState);
+        console.log(masterList);
     };
 
     /**
@@ -50,6 +52,7 @@ function TasksLists() {
     this.addTag = function (tag) {
         this.allTags.push(tag);
         this.tagsCount++;
+        console.log(masterList);
     };
 
     /**
@@ -125,4 +128,48 @@ function TasksLists() {
             }
         }
     };
+
+    this.generateForm = function () {
+        var htmlString = "";
+
+        htmlString = htmlString.concat("<h2>Task Manager</h2>");
+        htmlString = htmlString.concat("<label>Task Name: </label><input type='text' id='addTaskName' name='taskName'><br><br>");
+        htmlString = htmlString.concat("<label>Task Description: </label><input type='text' id='addTaskDescription'><br><br>");
+        htmlString = htmlString.concat("<label>Due Date:</label><input type='datetime-local' id='addDate' placeholder='Select Date'><br><br>");
+        htmlString = htmlString.concat("<label>Alarm: </label><input type='radio' id='addAlarm' name='yes' value='yes'><label>Yes</label>" +
+            "<input type='radio' name='no' value='no'><label>No</label><br><br>");
+        htmlString = htmlString.concat("<label>How long before would you like the alarm? </label><input type='number' id='addDudeDate' name='time' min='1' max='60'>" +
+            "<select><option value='hours'>Hours</option><option value='minutes'>Minutes</option></select><br><br>");
+        htmlString = htmlString.concat("<label>Tags </label><input name='tag' id='addTagName' type='text' placeholder='Tag'><br><br>");
+        htmlString = htmlString.concat("<label>Priority </label><input id='addTagColor' name='tagColor' type='text' placeholder='Color'><br><br>");
+        htmlString = htmlString.concat("<input id='addTask' type='submit' value='Add'>");
+
+        return htmlString;
+    };
+
+    this.generateList = function () {
+        var htmlString = "";
+
+        htmlString = htmlString.concat("<tr><th>Task Details</th><th>Tags</th><th>Checkbox</th></tr>");
+
+        for (var i = 0; i < this.currentList.length; i++) {
+            console.log(this);
+            htmlString = htmlString.concat("<tr id='task" + this.currentList[i].id + "'><td>" + this.currentList[i].taskName + "</td><td>" + this.currentList[i].tags[0].tagName + "</td>" +
+                "<td><input type='radio' name='test' value='testing'/></td></tr>");
+        }
+        return htmlString;
+    }
+
+    this.generateFinishedList = function () {
+        var htmlString = "";
+
+        htmlString = htmlString.concat("<tr><th>Task Details</th><th>Tags</th></tr>");
+
+        for (var i = 0; i < this.currentList.length; i++) {
+            console.log(this);
+            htmlString = htmlString.concat("<tr id='task" + this.doneTasks[i].id + "'><td>" + this.doneTasks[i].taskName + "</td><td>" + this.doneTasks[i].tags[0].tagName + "</td>" +
+                "<td><input type='radio' name='test' value='testing'/></td></tr>");
+        }
+        return htmlString;
+    }
 }
