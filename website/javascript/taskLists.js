@@ -120,7 +120,7 @@ function TasksLists() {
         }
         for (var i = this.allTasks.length - 1; i >= 0; i--) {
             for (var j = i - 1; j >= 0; j--) {
-                if (this.allTasks[i].priority > this.allTasks[j].priority) {
+                if (this.allTasks[i].dueDate < this.allTasks[j].dueDate) {
                     var temp = this.allTasks[i];
                     this.allTasks[i] = this.allTasks[j];
                     this.allTasks[j] = temp;
@@ -154,20 +154,20 @@ function TasksLists() {
 
         for (var i = 0; i < this.currentList.length; i++) {
             console.log(this);
-            htmlString = htmlString.concat("<tr id='task" + this.currentList[i].id + "'><td>" + this.currentList[i].taskName + "</td><td>" + this.currentList[i].tags[0].tagName + "</td>" +
+            htmlString = htmlString.concat("<tr id='" + this.currentList[i].id + "'><td>" + this.currentList[i].taskName + "</td><td>" + this.currentList[i].id + "</td>" +
                 "<td><input type='radio' name='test' value='testing'/></td></tr>");
         }
         return htmlString;
-    }
+    };
 
     this.generateFinishedList = function () {
         var htmlString = "";
 
         htmlString = htmlString.concat("<tr><th>Task Details</th><th>Tags</th></tr>");
 
-        for (var i = 0; i < this.currentList.length; i++) {
+        for (var i = this.doneTasks.length; i > 0; i--) {
             console.log(this);
-            htmlString = htmlString.concat("<tr id='task" + this.doneTasks[i].id + "'><td>" + this.doneTasks[i].taskName + "</td><td>" + this.doneTasks[i].tags[0].tagName + "</td>" +
+            htmlString = htmlString.concat("<tr id='" + this.doneTasks[i - 1].id + "'><td>" + this.doneTasks[i - 1].taskName + "</td><td>" + this.doneTasks[i - 1].id + "</td>" +
                 "<td><input type='radio' name='test' value='testing'/></td></tr>");
         }
         return htmlString;

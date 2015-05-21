@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    $("#myTable").html(masterList.generateList());
+    $("#todoTasks").html(masterList.generateList());
     $("#finishedTasks").html(masterList.generateFinishedList());
 
     $("#addTaskForm").dialog({
@@ -19,41 +19,38 @@ $(document).ready(function () {
     $("#addTaskForm").on('click', '#addTask', function (e) {
         e.preventDefault();
 
-        newTagName = $("#addTagName").val();
-        newTagColor = "red";
-        newTag = new Tag(newTagName, newTagColor);
+        var newTagName = $("#addTagName").val();
+        var newTagColor = "red";
+        var newTag = new Tag(newTagName, newTagColor);
         masterList.addTag(newTag);
 
-        newTaskName = $("#addTaskName").val();
-        newTaskDescription = $("#addTaskDescription").val();
-        newDueDate = $("#addDate").val();
-        newDueDate = formatDate(newDueDate);
-        newTask = new Task(newTaskName, newTaskDescription, [newTag], newDueDate);
+        var newTaskName = $("#addTaskName").val();
+        var newTaskDescription = $("#addTaskDescription").val();
+        var newDueDate = $("#addDate").val();
+        var newDateString = formatDate(newDueDate);
+        var newTask = new Task(newTaskName, newTaskDescription, [newTag], newDateString);
         masterList.addTask(newTask);
 
-        $("#myTable").html(masterList.generateList());
+        $("#todoTasks").html(masterList.generateList());
         $("#addTaskForm").dialog("close");
     });
 
     $("#removeItem").click(function (e) {
         e.preventDefault();
 
-        $('#myTable tr').each(function (i, row) {
-            console.log(i);
+        $('#todoTasks tr').each(function (i, row) {
            //Reference all the stuff I need
-            var $row = $(row);
-            var $check = $row.find('input:checked');
-            masterList.finishTask(i);
+            var rowHtml = $(row);
+            var check = rowHtml.find('input:checked');
 
-            $check.each(function (i, checkbox) {
-               $(row).remove();
+            check.each(function () {
+                masterList.finishTask($(rowHtml).attr('id'));
+                $(rowHtml).remove();
             });
         });
 
         $("#finishedTasks").html(masterList.generateFinishedList());
     });
-    console.log("END");
-    console.log(masterList);
 });
 
 function formatDate(date) {
