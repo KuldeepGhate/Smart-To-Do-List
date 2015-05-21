@@ -247,7 +247,8 @@ table tr:hover td {
     float: right;
     margin-top: 30px;
 }
-.add {
+
+.button {
 
     -moz-box-shadow: 0px 0px 0px 2px #9fb4f2;
     -webkit-box-shadow: 0px 0px 0px 2px #9fb4f2;
@@ -276,7 +277,7 @@ table tr:hover td {
     margin-left: 15%;
 }
 
-.add:hover {
+.button:hover {
     background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #476e9e), color-stop(1, #7892c2));
     background:-moz-linear-gradient(top, #476e9e 5%, #7892c2 100%);
     background:-webkit-linear-gradient(top, #476e9e 5%, #7892c2 100%);
@@ -287,7 +288,7 @@ table tr:hover td {
     background-color:#476e9e;
 }
 
-.add:active {
+.button:active {
     position:relative;
     top:1px;
 }

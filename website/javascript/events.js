@@ -10,7 +10,7 @@ $(document).ready(function () {
         width: 600
     });
 
-    $("#openForm").click(function () {
+    $("#addTask").click(function () {
         $("#addTaskForm").dialog("open");
         $("#addTaskForm").empty();
         $("#addTaskForm").html(masterList.generateForm());
@@ -35,7 +35,7 @@ $(document).ready(function () {
         $("#addTaskForm").dialog("close");
     });
 
-    $("#removeItem").click(function (e) {
+    $("#removeTask").click(function (e) {
         e.preventDefault();
 
         $('#todoTasks tr').each(function (i, row) {
