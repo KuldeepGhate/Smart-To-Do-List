@@ -26,9 +26,9 @@ $(document).ready(function () {
 
         var newTaskName = $("#addTaskName").val();
         var newTaskDescription = $("#addTaskDescription").val();
-        var newDueDate = $("#addDate").val();
-        var newDateString = formatDate(newDueDate);
-        var newTask = new Task(newTaskName, newTaskDescription, [newTag], newDateString);
+        var newDueDate = new Date($("#addDate").val());
+        newDueDate = newDueDate.getTime() / 100.0;
+        var newTask = new Task(newTaskName, newTaskDescription, [newTag], newDueDate);
         masterList.addTask(newTask);
 
         $("#todoTasks").html(masterList.generateList());
@@ -52,10 +52,3 @@ $(document).ready(function () {
         $("#finishedTasks").html(masterList.generateFinishedList());
     });
 });
-
-function formatDate(date) {
-    var strippedDate = date.replace("-", "");
-    strippedDate = strippedDate.replace("T", "");
-    strippedDate = strippedDate.replace(":", "");
-    return strippedDate;
-}
