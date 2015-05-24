@@ -10,11 +10,18 @@
 function Task(taskName, taskDescription, tags, dueDate) {
     this.taskName = taskName;
     this.taskDescription = taskDescription;
-    this.dueDate = dueDate;
-    this.priority = setPriority(this);
     this.tags = tags;
     this.tagsCount = tags.length;
     this.id = -1;
+
+    this.dueDate = dueDate;
+    if (this.dueDate == null) {
+        this.dueDate = 9000000000000;
+    }
+    this.dueDate /= 1000;
+    this.dueDate = Math.round(this.dueDate);
+    this.priority = setPriority(this);
+
 }
 
 var PriorityEnum = {
@@ -31,13 +38,16 @@ function setPriority(task) {
     }
 
     var now = Date.now();
-    if (now - task.dueDate < -60000) {
+    now = Math.round(now /= 1000);
+    console.log(now + "\n" + task.dueDate + "\n" + (now - task.dueDate));
+
+    if (now - task.dueDate < -8640000) {
         return PriorityEnum.UNIMPORTANT;
     }
-    else if (now - task.dueDate < -6000) {
+    else if (now - task.dueDate < -360000) {
         return PriorityEnum.IMPORTANT;
     }
-    else if (now - task.dueDate < 0) {
+    else if (now - task.dueDate <= 10) {
         return PriorityEnum.CRITICAL;
     }
 

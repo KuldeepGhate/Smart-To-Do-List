@@ -27,7 +27,6 @@ $(document).ready(function () {
         var newTaskName = $("#addTaskName").val();
         var newTaskDescription = $("#addTaskDescription").val();
         var newDueDate = new Date($("#addDate").val());
-        newDueDate = newDueDate.getTime() / 100.0;
         var newTask = new Task(newTaskName, newTaskDescription, [newTag], newDueDate);
         masterList.addTask(newTask);
 
