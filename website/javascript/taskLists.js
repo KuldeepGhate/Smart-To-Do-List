@@ -112,6 +112,9 @@ function TasksLists() {
         this.currentList = newList;
     };
 
+    /**
+     * Sorts the main list based on the due dates
+     */
     this.sortAll = function () {
         if (this.allTasks.length < 2) {
             return;
@@ -127,6 +130,11 @@ function TasksLists() {
         }
     };
 
+    /**
+     * Generates the form that allows you to add a task
+     *
+     * @returns {string}: The html for the form
+     */
     this.generateForm = function () {
         var htmlString = "";
 
@@ -134,10 +142,9 @@ function TasksLists() {
         htmlString = htmlString.concat("<label>Task Name: </label><input type='text' id='addTaskName' name='taskName'><br><br>");
         htmlString = htmlString.concat("<label>Task Description: </label><input type='text' id='addTaskDescription'><br><br>");
         htmlString = htmlString.concat("<label>Due Date:</label><input type='datetime-local' id='addDate' placeholder='Select Date'><br><br>");
-        htmlString = htmlString.concat("<label>Alarm: </label><input type='radio' id='addAlarm' name='yes' value='yes'><label>Yes</label>" +
-            "<input type='radio' name='no' value='no'><label>No</label><br><br>");
-        htmlString = htmlString.concat("<label>How long before would you like the alarm? </label><input type='number' id='addDudeDate' name='time' min='1' max='60'>" +
-            "<select><option value='hours'>Hours</option><option value='minutes'>Minutes</option></select><br><br>");
+        htmlString = htmlString.concat("<label>Alarm: </label><input type='checkbox' id='addAlarm' name='yes' value='true'><br><br>");
+        htmlString = htmlString.concat("<label>How long before would you like the alarm? </label><input type='number' id='addAlarmDate' name='time' min='1' max='60'>" +
+            "<select id='timeSelect'><option value='hours'>Hours</option><option value='minutes'>Minutes</option></select><br><br>");
         htmlString = htmlString.concat("<label>Tags </label><input name='tag' id='addTagName' type='text' placeholder='Tag'><br><br>");
         htmlString = htmlString.concat("<label>Priority </label><input id='addTagColor' name='tagColor' type='text' placeholder='Color'><br><br>");
         htmlString = htmlString.concat("<input id='addTask' type='submit' value='Add'>");
@@ -145,6 +152,11 @@ function TasksLists() {
         return htmlString;
     };
 
+    /**
+     * Generates the to do list based on the current list
+     *
+     * @returns {string}: The html for the list
+     */
     this.generateList = function () {
         var htmlString = "";
 
@@ -157,6 +169,11 @@ function TasksLists() {
         return htmlString;
     };
 
+    /**
+     * Generates the finished list
+     *
+     * @returns {string}: The html for the list
+     */
     this.generateFinishedList = function () {
         var htmlString = "";
 
