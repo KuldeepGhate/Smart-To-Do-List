@@ -36,7 +36,7 @@ function TasksLists() {
      * @returns {*}: If taskId exists in the list, returns the task
      *               If taskId doesn't exist in the list, returns false
      */
-    this.removeTask = function (taskId) {
+    this.getTask = function (taskId) {
         for (var i = 0; i < this.allTasks.length; i++) {
             if (this.allTasks[i].id == taskId) {
                 return this.allTasks[i];

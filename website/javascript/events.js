@@ -34,7 +34,7 @@ $(document).ready(function () {
 
             check.each(function () {
                 var id = $(rowHtml).attr("id");
-                taskToEdit = masterList.removeTask(id);
+                taskToEdit = masterList.getTask(id);
                 console.log(taskToEdit);
             });
         });
