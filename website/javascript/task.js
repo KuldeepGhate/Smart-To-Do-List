@@ -3,17 +3,16 @@
  *
  * @param taskName
  * @param taskDescription
- * @param tags: Needs to be an array, even if it is only one tag being passed in!!
+ * @param tag
  * @param dueDate
- * @param alarm: if there is no alarm it is false
- *               if there is an alarm it is the alarm time
+ * @param alarm: If there is no alarm it is false
+ *               If there is an alarm it is the alarm time
  * @constructor
  */
-function Task(taskName, taskDescription, tags, dueDate, alarm) {
+function Task(taskName, taskDescription, tag, dueDate, alarm) {
     this.taskName = taskName;
     this.taskDescription = taskDescription;
-    this.tags = tags;
-    this.tagsCount = tags.length;
+    this.tag = tag;
     this.id = -1;
     this.alarmTime = false;
 

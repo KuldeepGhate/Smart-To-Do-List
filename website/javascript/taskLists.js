@@ -20,11 +20,29 @@ function TasksLists() {
      */
     this.addTask = function (task) {
         this.allTasks.push(task);
-        task.id = this.idCount;
+        if (task.id < 0) {
+            task.id = this.idCount;
+        }
         this.idCount++;
         this.taskCount++;
         this.sortAll();
         this.switchList(this.listState);
+    };
+
+    /**
+     * Returns the task given an idd
+     *
+     * @param taskId
+     * @returns {*}: If taskId exists in the list, returns the task
+     *               If taskId doesn't exist in the list, returns false
+     */
+    this.removeTask = function (taskId) {
+        for (var i = 0; i < this.allTasks.length; i++) {
+            if (this.allTasks[i].id == taskId) {
+                return this.allTasks[i];
+            }
+        }
+        return false;
     };
 
     /**
@@ -95,17 +113,8 @@ function TasksLists() {
     this.createList = function (tag) {
         var newList = [];
         for (var i = 0; i < this.taskCount; i++) {
-            if (typeof(this.allTasks[i].tags.length) == "undefined") {
-                if (this.allTasks[i].tags.match(tag)) {
-                    newList.push(this.allTasks[i]);
-                }
-            }
-            else {
-                for (var j = 0; j < this.allTasks[i].tagsCount; j++) {
-                    if (this.allTasks[i].tags[j].match(tag)) {
-                        newList.push(this.allTasks[i]);
-                    }
-                }
+            if (this.allTasks[i].tag.match(tag)) {
+                newList.push(this.allTasks[i]);
             }
         }
         this.currentList = [];
@@ -135,10 +144,9 @@ function TasksLists() {
      *
      * @returns {string}: The html for the form
      */
-    this.generateForm = function () {
+    this.generateForm = function (caller) {
         var htmlString = "";
 
-        htmlString = htmlString.concat("<h2>Task Manager</h2>");
         htmlString = htmlString.concat("<label>Task Name: </label><input type='text' id='addTaskName' name='taskName'><br><br>");
         htmlString = htmlString.concat("<label>Task Description: </label><input type='text' id='addTaskDescription'><br><br>");
         htmlString = htmlString.concat("<label>Due Date:</label><input type='datetime-local' id='addDate' placeholder='Select Date'><br><br>");
@@ -147,7 +155,7 @@ function TasksLists() {
             "<select id='timeSelect'><option value='hours'>Hours</option><option value='minutes'>Minutes</option></select><br><br>");
         htmlString = htmlString.concat("<label>Tags </label><input name='tag' id='addTagName' type='text' placeholder='Tag'><br><br>");
         htmlString = htmlString.concat("<label>Priority </label><input id='addTagColor' name='tagColor' type='text' placeholder='Color'><br><br>");
-        htmlString = htmlString.concat("<input id='addTask' type='submit' value='Add'>");
+        htmlString = htmlString.concat("<input id='taskButton' type='submit' value='Apply'>");
 
         return htmlString;
     };
