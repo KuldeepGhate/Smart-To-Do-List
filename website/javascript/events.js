@@ -12,6 +12,12 @@ $(document).ready(function () {
         width: 600
     });
 
+    $("#content").click(function () {
+        masterList.refresh();
+        $("#taskForm").html(masterList.generateForm("edit"));
+        $("#finishedTasks").html(masterList.generateFinishedList());
+    });
+
     // After clicking the add on the main page
     $("#addTask").click(function () {
         $("#taskForm").dialog("open");
@@ -87,10 +93,9 @@ $(document).ready(function () {
 
             check.each(function () {
                 masterList.finishTask($(rowHtml).attr("id"));
-                $(rowHtml).remove();
             });
         });
-
+        $("#todoTasks").html(masterList.generateList());
         $("#finishedTasks").html(masterList.generateFinishedList());
     });
 });
@@ -98,8 +103,8 @@ $(document).ready(function () {
 /**
  * Takes the alarm parameters from the add form and transforms it for a task
  *
- * @returns {*}: If the user wants an alarm it returns the alarm time
- *               If the user doesn"t want an alarm it returns false
+ * @returns {*}: if the user wants an alarm it returns the alarm time
+ *               if the user doesn"t want an alarm it returns false
  */
 function getAlarmTime() {
     if ($("#addAlarm:checkbox:checked").length > 0) {

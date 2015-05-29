@@ -21,9 +21,8 @@ function TasksLists() {
     this.addTask = function (task) {
         this.allTasks.push(task);
         if (task.id < 0) {
-            task.id = this.idCount;
+            task.id = this.idCount++;
         }
-        this.idCount++;
         this.taskCount++;
         this.sortAll();
         this.switchList(this.listState);
@@ -33,8 +32,8 @@ function TasksLists() {
      * Returns the task given an idd
      *
      * @param taskId
-     * @returns {*}: If taskId exists in the list, returns the task
-     *               If taskId doesn't exist in the list, returns false
+     * @returns {*}: if taskId exists in the list, returns the task
+     *               if taskId doesn't exist in the list, returns false
      */
     this.getTask = function (taskId) {
         for (var i = 0; i < this.allTasks.length; i++) {
@@ -51,9 +50,12 @@ function TasksLists() {
      * @param taskId
      */
     this.finishTask = function (taskId) {
-        for (var i = 0; i < this.allTasks.length; i++) {
+        for (var i = 0; i < this.taskCount; i++) {
             if (this.allTasks[i].id == taskId) {
-                this.doneTasks.push(this.allTasks.splice(i, 1)[0]);
+                var doneTask = this.allTasks.splice(i, 1);
+                console.log(doneTask[0]);
+                this.doneTasks.push(doneTask[0]);
+                console.log(this.doneTasks);
                 break;
             }
         }
@@ -139,6 +141,12 @@ function TasksLists() {
         }
     };
 
+    this.refresh = function () {
+        for (var i = 0; i < this.allTasks.length; i++) {
+            setPriority(this.allTasks[i]);
+        }
+    };
+
     /**
      * Generates the form that allows you to add a task
      *
@@ -168,11 +176,11 @@ function TasksLists() {
     this.generateList = function () {
         var htmlString = "";
 
-        htmlString = htmlString.concat("<tr><th>Task Details</th><th>Tags</th><th>Checkbox</th></tr>");
+        htmlString = htmlString.concat("<tr></tr><tr><th>Name</th><th>Description</th><th>Tag</th><th>Checkbox</th></tr>");
 
         for (var i = 0; i < this.currentList.length; i++) {
-            htmlString = htmlString.concat("<tr id='" + this.currentList[i].id + "'><td>" + this.currentList[i].taskName + "</td><td>" + this.currentList[i].id + "</td>" +
-                "<td><input type='radio' name='test' value='testing'/></td></tr>");
+            htmlString = htmlString.concat("<tr id='" + this.currentList[i].id + "'><td>" + this.currentList[i].taskName + "</td><td>" + this.currentList[i].taskDescription + "</td>" +
+                "<td>" + this.currentList[i].tag.tagName + "</td><td><input type='radio' name='test' value='testing'/></td></tr>");
         }
         return htmlString;
     };
@@ -185,11 +193,11 @@ function TasksLists() {
     this.generateFinishedList = function () {
         var htmlString = "";
 
-        htmlString = htmlString.concat("<tr><th>Task Details</th><th>Tags</th></tr>");
+        htmlString = htmlString.concat("<tr></tr><tr><th>Name</th><th>Description</th><th>Tag</th></tr>");
 
-        for (var i = this.doneTasks.length; i > 0; i--) {
-            htmlString = htmlString.concat("<tr id='" + this.doneTasks[i - 1].id + "'><td>" + this.doneTasks[i - 1].taskName + "</td><td>" + this.doneTasks[i - 1].id + "</td>" +
-                "<td><input type='radio' name='test' value='testing'/></td></tr>");
+        for (var i = this.doneTasks.length - 1; i > -1; i--) {
+            htmlString = htmlString.concat("<tr id='" + this.doneTasks[i].id + "'><td>" + this.doneTasks[i].taskName + "</td><td>" + this.doneTasks[i].taskDescription + "</td>" +
+                "<td>" + this.doneTasks[i].tag.tagName + "</td></tr>");
         }
         return htmlString;
     }
