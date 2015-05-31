@@ -141,6 +141,9 @@ function TasksLists() {
         }
     };
 
+    /**
+     * Refreshes the tasks in the main list
+     */
     this.refresh = function () {
         for (var i = 0; i < this.allTasks.length; i++) {
             setPriority(this.allTasks[i]);
