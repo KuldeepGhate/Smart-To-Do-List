@@ -2,16 +2,14 @@
  * This is the task object
  *
  * @param taskName
- * @param taskDescription
  * @param tag
  * @param dueDate
  * @param alarm: If there is no alarm it is false
  *               If there is an alarm it is the alarm time
  * @constructor
  */
-function Task(taskName, taskDescription, tag, dueDate, alarm) {
+function Task(taskName, tag, dueDate, alarm) {
     this.taskName = taskName;
-    this.taskDescription = taskDescription;
     this.tag = tag;
     this.id = -1;
     this.alarmTime = false;

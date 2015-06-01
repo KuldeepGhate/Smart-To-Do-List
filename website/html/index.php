@@ -37,14 +37,9 @@
             <form action="form.php" id="addTaskForm" method="post">
                 <h2>Task Manager</h2>
                 <label for="addTaskName">Task Name: </label><input type='text' id='addTaskName' name='taskName'><br><br>
-                <label for="addDate">Due Date:</label><input type='datetime-local' id='addDate'
-                                                             placeholder='Select Date' name='dueDate'><br><br>
-                <label for="addAlarm">Alarm: </label><input type='checkbox' id='addAlarm' name='yes'
-                                                            value='true'><br><br>
-                <label for="addAlarmDate">How long before would you like the alarm? </label><input type='number'
-                                                                                                   id='addAlarmDate'
-                                                                                                   name='time' min='1'
-                                                                                                   max='60'>
+                <label for="addDate">Due Date:</label><input type='datetime-local' id='addDate' placeholder='Select Date' name='dueDate'><br><br>
+                <label for="addAlarm">Alarm: </label><input type='checkbox' id='addAlarm' name='yes' value='true'><br><br>
+                <label for="addAlarmDate">How long before would you like the alarm? </label><input type='number' id='addAlarmDate' name='time' min='1' max='60'>
                 <select id='timeSelect'>
                     <option value='hours'>Hours</option>
                     <option value='minutes'>Minutes</option>
@@ -60,9 +55,9 @@
                 </table>
             </div>
 
-            <a href="#" id="addTask" class="button">Add item</a>
-            <a href="#" id="editTask" class="button">Edit item</a>
-            <a href="#" id="removeTask" class="button">Remove item</a>
+            <a id="addTask" class="button">Add item</a>
+            <a id="editTask" class="button">Edit item</a>
+            <a id="removeTask" class="button">Remove item</a>
 
         </div>
     </div>

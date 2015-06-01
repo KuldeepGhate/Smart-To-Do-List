@@ -16,17 +16,9 @@ function Tag(tagName, tagColor) {
      * @returns {boolean}
      */
     this.match = function (tag) {
-        if (typeof(tag) == "string") {
-            var matches = this.tagName.match(tag);
-            if (matches == tag) {
-                return true;
-            }
-        }
-        else {
-            matches = this.tagName.match(tag.tagName);
-            if (matches == tag.tagName) {
-                return true;
-            }
+        matches = this.tagName.match(tag.tagName);
+        if (matches == tag.tagName) {
+            return true;
         }
         return false;
     }

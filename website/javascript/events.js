@@ -8,32 +8,6 @@ $(document).ready(function () {
         $("#finishedTasks").html(masterList.generateFinishedList());
     });
 
-    // After clicking the edit button
-    $("#editTask").click(function () {
-        $("#taskForm").dialog("open");
-        $("#taskForm").empty();
-        $("#taskForm").html(masterList.generateForm("edit"));
-
-        var taskToEdit;
-
-        $("#todoTasks tr").each(function (i, row) {
-            //Reference all the stuff I need
-            var rowHtml = $(row);
-            var check = rowHtml.find("input:checked");
-
-            check.each(function () {
-                var id = $(rowHtml).attr("id");
-                taskToEdit = masterList.getTask(id);
-                console.log(taskToEdit);
-            });
-        });
-        editId = taskToEdit.id;
-        $("#addTaskName").val(taskToEdit.taskName);
-        $("#addTaskDescription").val(taskToEdit.taskDescription);
-        // DateTime and alarm time pre-population aren't working
-        $("#addTagName").val(taskToEdit.tag.tagName);
-    });
-
     // After clicking the add button
     $("#addTask").click(function (e) {
         e.preventDefault();
@@ -58,15 +32,30 @@ $(document).ready(function () {
          */
     });
 
-    $("#taskForm").on("click", "#editTask", function (e) {
-        e.preventDefault();
+    // After clicking the edit button
+    $("#editTask").click(function () {
+        var taskToEdit;
 
+        $("#todoTasks tr").each(function (i, row) {
+            //Reference all the stuff I need
+            var rowHtml = $(row);
+            var check = rowHtml.find("input:checked");
+
+            check.each(function () {
+                var id = $(rowHtml).attr("id");
+                taskToEdit = masterList.getTask(id);
+                console.log(taskToEdit);
+            });
+        });
+        editId = taskToEdit.id;
+        $("#addTaskName").val(taskToEdit.taskName);
+        // DateTime and alarm time pre-population aren't working
+        $("#addTagName").val(taskToEdit.tag.tagName);
 
         /*
          * INSERT AJAX CALLS TO PHP HERE
          */
     });
-
 
     // After selecting a task and clicking the remove button
     $("#removeTask").click(function (e) {
