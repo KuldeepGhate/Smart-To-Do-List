@@ -42,7 +42,7 @@
                 <label for="addDate">Due Date:</label><input type='datetime-local' id='addDate' placeholder='Select Date' name='dueDate'><br><br>
                 <label for="addAlarm">Alarm: </label><input type='checkbox' id='addAlarm' name='yes' value='true'><br><br>
                 <label for="addAlarmDate">How long before would you like the alarm? </label><input type='number' id='addAlarmDate' name='time' min='1' max='60'>
-                <label for="addTaskName">Task Name: </label><input type='text' id='addTaskName1' name='taskName'><br>
+                <label for="addTaskName1">Task Name: </label><input type='text' id='addTaskName1' name='taskName'><br>
                 <label for="addDate">Due Date:</label><input type='datetime-local' id='addDate' placeholder='Select Date' name='dueDate'><br><br>
                 <label for="addAlarm">Alarm: </label><input type='checkbox' id='addAlarm' name='yes' value='true'><br><br>
                 <label for="addAlarmDate">How long before would you like the alarm? </label><input type='number' id='addAlarmDate' name='time' min='1' max='60'>
