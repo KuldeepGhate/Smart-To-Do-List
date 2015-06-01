@@ -55,9 +55,9 @@
                 </table>
             </div>
 
-            <a href="#" id="addTask" class="button">Add item</a>
-            <a href="#" id="editTask" class="button">Edit item</a>
-            <a href="#" id="removeTask" class="button">Remove item</a>
+            <a id="addTask" class="button">Add item</a>
+            <a id="editTask" class="button">Edit item</a>
+            <a id="removeTask" class="button">Remove item</a>
 
         </div>
     </div>
