@@ -3,29 +3,12 @@ $(document).ready(function () {
     $("#todoTasks").html(masterList.generateList());
     $("#finishedTasks").html(masterList.generateFinishedList());
 
-    // Initializes the add form
-    $("#taskForm").dialog({
-        autoOpen: false,
-        maxHeight: 600,
-        maxWidth: 600,
-        height: 600,
-        width: 600
-    });
-
     $("#content").click(function () {
         masterList.refresh();
-        $("#taskForm").html(masterList.generateForm("edit"));
         $("#finishedTasks").html(masterList.generateFinishedList());
     });
 
-    // After clicking the add on the main page
-    $("#addTask").click(function () {
-        $("#taskForm").dialog("open");
-        $("#taskForm").empty();
-        $("#taskForm").html(masterList.generateForm("add"));
-    });
-
-    // After clicking the edit button on the main page
+    // After clicking the edit button
     $("#editTask").click(function () {
         $("#taskForm").dialog("open");
         $("#taskForm").empty();
@@ -49,23 +32,18 @@ $(document).ready(function () {
         $("#addTaskDescription").val(taskToEdit.taskDescription);
         // DateTime and alarm time pre-population aren't working
         $("#addTagName").val(taskToEdit.tag.tagName);
-        $("#addTagColor").val(taskToEdit.tag.tagColor);
     });
 
-    // After clicking the apply button in the form
-    $("#taskForm").on("click", "#taskButton", function (e) {
+    // After clicking the add button
+    $("#addTask").click(function (e) {
         e.preventDefault();
 
-        var newTagName = $("#addTagName").val();
-        var newTagColor = "red";
-        var newTag = new Tag(newTagName, newTagColor);
-        masterList.addTag(newTag);
-
+        var newTag = $("#addTagName").val();
         var newTaskName = $("#addTaskName").val();
         var newTaskDescription = $("#addTaskDescription").val();
         var newDueDate = new Date($("#addDate").val());
         var newAlarm = getAlarmTime();
-        var newTask = new Task(newTaskName, newTaskDescription, [newTag], newDueDate, newAlarm);
+        var newTask = new Task(newTaskName, newTaskDescription, newTag, newDueDate, newAlarm);
         if (editId) {
             newTask.id = editId;
             editId = null;
@@ -74,15 +52,23 @@ $(document).ready(function () {
 
         $("#todoTasks").html(masterList.generateList());
         $("#taskForm").dialog("close");
+
+        /*
+         * INSERT AJAX CALLS TO PHP HERE
+         */
     });
 
     $("#taskForm").on("click", "#editTask", function (e) {
         e.preventDefault();
 
+
+        /*
+         * INSERT AJAX CALLS TO PHP HERE
+         */
     });
 
 
-    // After selecting a task an clicking the remove button
+    // After selecting a task and clicking the remove button
     $("#removeTask").click(function (e) {
         e.preventDefault();
 
@@ -92,7 +78,12 @@ $(document).ready(function () {
             var check = rowHtml.find("input:checked");
 
             check.each(function () {
-                masterList.finishTask($(rowHtml).attr("id"));
+                var finishedTaskId = $(rowHtml).attr("id");
+                masterList.finishTask(finishedTaskId);
+
+                /*
+                 * INSERT AJAX CALLS TO PHP HERE
+                 */
             });
         });
         $("#todoTasks").html(masterList.generateList());
