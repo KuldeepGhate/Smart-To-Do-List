@@ -14,19 +14,18 @@
     <script src="../javascript/events.js"></script>
 </head>
 
-<body class="wallpaper">
+<body >
     <div id="container">
         <div id="header">
-            <h1 class="big-heading">The Best To Do List</h1>
+            <h1 class="big-heading">The Best to do List</h1>
         </div>
 
         <!-- The Lists -->
         <div id="content">
+            
             <div id="todo">
-
                 <!-- To do list -->
                 <div id="divTasksTable">
-                    <h2>To Do</h2>
                     <!-- cellspacing='0' is important, must stay -->
                     <table id="todoTasks" cellspacing='0'>
                     </table>
@@ -34,21 +33,19 @@
 
                 <!-- To do list -->
                 <div id="divFinishedTable">
-                    <h2>Finished</h2>
                     <!-- cellspacing='0' is important, must stay -->
                     <table id="finishedTasks" cellspacing='0'>
                     </table>
                 </div>
-            </div>
-            <div id="controller">
-                <a href="#" id="addTask" class="button">Add item</a>
-                <a href="#" id="editTask" class="button">Edit item</a>
-                <a href="#" id="removeTask" class="button">Remove item</a>
+                <a href="#" id="addTask" class="button" style="color:black">Add item</a>
+                <a href="#" id="removeTask" class="button" style="color:black">Remove item</a>
+                <a href="#" id="removeTask" class="button" style="color:black">Edit item</a>
+                
             </div>
         </div>
 
         <!-- Popup Div -->
-        <form id="taskForm" title="Task Manager">
+        <form id="addTaskForm" title="Add Task">
         </form>
 
         <div id="footer">
