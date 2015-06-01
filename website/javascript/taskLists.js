@@ -64,16 +64,6 @@ function TasksLists() {
     };
 
     /**
-     * Adds a tag to the main tag list
-     *
-     * @param tag
-     */
-    this.addTag = function (tag) {
-        this.allTags.push(tag);
-        this.tagsCount++;
-    };
-
-    /**
      * Checks if a tag exists
      *
      * @param type
@@ -148,27 +138,6 @@ function TasksLists() {
         for (var i = 0; i < this.allTasks.length; i++) {
             setPriority(this.allTasks[i]);
         }
-    };
-
-    /**
-     * Generates the form that allows you to add a task
-     *
-     * @returns {string}: The html for the form
-     */
-    this.generateForm = function (caller) {
-        var htmlString = "";
-
-        htmlString = htmlString.concat("<label>Task Name: </label><input type='text' id='addTaskName' name='taskName'><br><br>");
-        htmlString = htmlString.concat("<label>Task Description: </label><input type='text' id='addTaskDescription'><br><br>");
-        htmlString = htmlString.concat("<label>Due Date:</label><input type='datetime-local' id='addDate' placeholder='Select Date'><br><br>");
-        htmlString = htmlString.concat("<label>Alarm: </label><input type='checkbox' id='addAlarm' name='yes' value='true'><br><br>");
-        htmlString = htmlString.concat("<label>How long before would you like the alarm? </label><input type='number' id='addAlarmDate' name='time' min='1' max='60'>" +
-            "<select id='timeSelect'><option value='hours'>Hours</option><option value='minutes'>Minutes</option></select><br><br>");
-        htmlString = htmlString.concat("<label>Tags </label><input name='tag' id='addTagName' type='text' placeholder='Tag'><br><br>");
-        htmlString = htmlString.concat("<label>Priority </label><input id='addTagColor' name='tagColor' type='text' placeholder='Color'><br><br>");
-        htmlString = htmlString.concat("<input id='taskButton' type='submit' value='Apply'>");
-
-        return htmlString;
     };
 
     /**
