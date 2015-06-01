@@ -16,7 +16,7 @@ function Tag(tagName, tagColor) {
      * @returns {boolean}
      */
     this.match = function (tag) {
-        matches = this.tagName.match(tag.tagName);
+        var matches = this.tagName.match(tag.tagName);
         if (matches == tag.tagName) {
             return true;
         }

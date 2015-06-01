@@ -4,15 +4,15 @@
 function TasksLists() {
     this.idCount = 0;
     this.taskCount = 0;
-    this.tagsCount = 0;
 
     this.allTasks = [];
     this.doneTasks = [];
     this.allTags = [
-        new Tag("school", "red"),
-        new Tag("work", "green"),
-        new Tag("life", "blue"),
-        new Tag("food", "brown")
+        new Tag("None", "white"),
+        new Tag("School", "red"),
+        new Tag("Work", "green"),
+        new Tag("Life", "blue"),
+        new Tag("Food", "brown")
     ];
 
     this.currentList = this.allTasks;
@@ -25,14 +25,19 @@ function TasksLists() {
      */
     this.addTask = function (task) {
         var tagIndex = this.hasTag(task.tag);
-        console.log(task);
         if (tagIndex > -1) {
             task.tag = this.allTags[tagIndex];
         }
-        this.allTasks.push(task);
+        else {
+            task.tag = this.allTags[0];
+        }
+        console.log(tagIndex);
+        console.log(task.tag);
         if (task.id < 0) {
             task.id = this.idCount++;
         }
+
+        this.allTasks.push(task);
         this.taskCount++;
         this.sortAll();
         this.switchList(this.listState);
@@ -63,9 +68,7 @@ function TasksLists() {
         for (var i = 0; i < this.taskCount; i++) {
             if (this.allTasks[i].id == taskId) {
                 var doneTask = this.allTasks.splice(i, 1);
-                console.log(doneTask[0]);
                 this.doneTasks.push(doneTask[0]);
-                console.log(this.doneTasks);
                 break;
             }
         }
@@ -81,7 +84,7 @@ function TasksLists() {
      *                    -1 there was no match
      */
     this.hasTag = function (type) {
-        for (var tagIndex = 0; tagIndex < this.tagsCount; tagIndex++) {
+        for (var tagIndex = 0; tagIndex < this.allTags.length; tagIndex++) {
             if (this.allTags[tagIndex].match(type)) {
                 return tagIndex;
             }
@@ -159,17 +162,10 @@ function TasksLists() {
         var htmlString = "";
 
         htmlString = htmlString.concat("<tr></tr><tr><th>Name</th><th>Tag</th><th>Checkbox</th></tr>");
-
         for (var i = 0; i < this.currentList.length; i++) {
-            var tagName = "";
-            if (this.currentList[i].tag === null) {
-                tagName = "None";
-            }
-            else {
-                tagName = this.currentList[i].tag.tagName;
-            }
-            htmlString = htmlString.concat("<tr id='" + this.currentList[i].id + "'><td>" + this.currentList[i].taskName +
-                "</td><td>" + tagName + "</td><td><input type='radio' name='test' value='testing'/></td></tr>");
+            var task = this.currentList[i];
+            htmlString = htmlString.concat("<tr id='" + task.id + "'><td>" + task.taskName + "</td><td>" + task.tag.tagName +
+                "</td><td><input type='radio' name='test' value='testing'/></td></tr>");
         }
         return htmlString;
     };
@@ -183,17 +179,9 @@ function TasksLists() {
         var htmlString = "";
 
         htmlString = htmlString.concat("<tr></tr><tr><th>Name</th><th>Tag</th></tr>");
-
         for (var i = this.doneTasks.length - 1; i > -1; i--) {
-            var tagName = "";
-            if (this.doneTasks[i].tag === null) {
-                tagName = "None";
-            }
-            else {
-                tagName = this.doneTasks[i].tag.tagName;
-            }
-            htmlString = htmlString.concat("<tr id='" + this.doneTasks[i].id + "'><td>" + this.doneTasks[i].taskName +
-                "</td><td>" + tagName + "</td></tr>");
+            var task = this.doneTasks[i];
+            htmlString = htmlString.concat("<tr id='" + task.id + "'><td>" + task.taskName + "</td><td>" + task.tag.tagName + "</td></tr>");
         }
         return htmlString;
     }
