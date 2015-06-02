@@ -14,18 +14,20 @@ $(document).ready(function () {
 
         var newTag = $("#addTagName").val();
         var newTaskName = $("#addTaskName").val();
-        var newTaskDescription = $("#addTaskDescription").val();
         var newDueDate = new Date($("#addDate").val());
         var newAlarm = getAlarmTime();
-        var newTask = new Task(newTaskName, newTaskDescription, newTag, newDueDate, newAlarm);
+        var newTask = new Task(newTaskName, newTag, newDueDate, newAlarm);
         if (editId) {
             newTask.id = editId;
             editId = null;
+            $("#addTask").text("Add item");
+            $("#removeTask").text("Remove item");
+            $("#addTaskName").val("");
+            $("#addTagName").val("");
         }
         masterList.addTask(newTask);
 
         $("#todoTasks").html(masterList.generateList());
-        $("#taskForm").dialog("close");
 
         /*
          * INSERT AJAX CALLS TO PHP HERE
@@ -44,13 +46,15 @@ $(document).ready(function () {
             check.each(function () {
                 var id = $(rowHtml).attr("id");
                 taskToEdit = masterList.getTask(id);
-                console.log(taskToEdit);
             });
         });
         editId = taskToEdit.id;
         $("#addTaskName").val(taskToEdit.taskName);
         // DateTime and alarm time pre-population aren't working
         $("#addTagName").val(taskToEdit.tag.tagName);
+
+        $("#addTask").text("Apply Edit");
+        $("#removeTask").text("Cancel Edit");
 
         /*
          * INSERT AJAX CALLS TO PHP HERE
@@ -60,6 +64,14 @@ $(document).ready(function () {
     // After selecting a task and clicking the remove button
     $("#removeTask").click(function (e) {
         e.preventDefault();
+
+        if (editId) {
+            $("#addTask").text("Add item");
+            $("#removeTask").text("Remove item");
+            $("#addTaskName").val("");
+            $("#addTagName").val("");
+            return;
+        }
 
         $("#todoTasks tr").each(function (i, row) {
            //Reference all the stuff I need

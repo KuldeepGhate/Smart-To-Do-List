@@ -24,6 +24,14 @@ function TasksLists() {
      * @param task
      */
     this.addTask = function (task) {
+        if (task.id < 0) {
+            task.id = this.idCount++;
+        }
+        var taskIndex = this.getTaskIndex(task.id);
+        if (taskIndex) {
+            this.allTasks[taskIndex] = task;
+        }
+
         var tagIndex = this.hasTag(task.tag);
         if (tagIndex > -1) {
             task.tag = this.allTags[tagIndex];
@@ -31,29 +39,42 @@ function TasksLists() {
         else {
             task.tag = this.allTags[0];
         }
-        console.log(tagIndex);
-        console.log(task.tag);
-        if (task.id < 0) {
-            task.id = this.idCount++;
-        }
 
-        this.allTasks.push(task);
+        if (!taskIndex) {
+            this.allTasks.push(task);
+        }
         this.taskCount++;
         this.sortAll();
         this.switchList(this.listState);
     };
 
     /**
-     * Returns the task given an idd
+     * Returns the task given an id
      *
      * @param taskId
-     * @returns {*}: if taskId exists in the list, returns the task
-     *               if taskId doesn't exist in the list, returns false
+     * @returns {*}: If taskId exists in the list, returns the task
+     *               If taskId doesn't exist in the list, returns false
      */
     this.getTask = function (taskId) {
         for (var i = 0; i < this.allTasks.length; i++) {
             if (this.allTasks[i].id == taskId) {
                 return this.allTasks[i];
+            }
+        }
+        return false;
+    };
+
+    /**
+     * Returns the task index in allTasks given an id
+     *
+     * @param taskId
+     * @returns {*}: If taskId exists in the list, returns the task index
+     *               If taskId doesn't exist in the list, returns false
+     */
+    this.getTaskIndex = function (taskId) {
+        for (var i = 0; i < this.allTasks.length; i++) {
+            if (this.allTasks[i].id == taskId) {
+                return i;
             }
         }
         return false;
