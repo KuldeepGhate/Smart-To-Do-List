@@ -57,7 +57,7 @@ h2 {
 }
 
 #todo {
-    margin-left: 10%;
+    margin-left: 0%;
 }
 
 #todo input {
@@ -153,7 +153,7 @@ table {
     text-shadow: 1px 1px 0px #fff;
     background-color: #FFFFCC;
 
-    margin: 20px;
+    margin: 10px;
     border: #ccc 1px solid;
 }
 
@@ -183,12 +183,12 @@ table tr {
 
 table tr td:first-child {
     text-align: left;
-    padding-left: 20px;
+    padding-left: 10px;
     background-color: #FFFFCC;
 }
 
 table tr td {
-    padding: 18px;
+    padding: 5px;
     border-top: 1px solid #ffffff;
     border-bottom: 1px solid #e0e0e0;
     border-left: 1px solid #e0e0e0;
@@ -224,7 +224,7 @@ table tr:hover td {
 #divFinishedTable {
     width: 200px;
     float: right;
-    margin: 30px 0 0;
+    /*margin: 30px 0 0;*/
     background-color: #754719;
 }
 
@@ -263,42 +263,51 @@ table tr:hover td {
 
 #divTasksTable {
     float: left;
+    padding-left: 0%;
 
 }
 
 #divFinishedTasks {
     float: right;
-    margin-bottom: 30px;
+   
 }
 #addTaskName
 {
 background-color: #FFFFCC;
 margin-left: 2%;
-
+position: relative;
+margin-top: 30px;
 }
-#addTaskName1
-{
-background-color: #FFFFCC;
-margin-left: 2%;
 
-}
 #addDate
 {
    background-color: #FFFFCC; 
    margin-left: 2%;
+    position:relative;
 }
 #addAlarm
 {
     background-color: #FFFFCC; 
     margin-left: 1%;
+     position: relative;
 }
 #addAlarmDate
 {
     background-color: #FFFFCC; 
     margin-left: 1%;
+    position: relative;
+
 }
 #addTagName
 {
     background-color: #FFFFCC; 
     margin-left: 1%;
+}
+form
+{
+    background-color: black;
+    padding-left: 0%;
+    margin-right: 18%;
+    margin-left: 40%;
+
 }
