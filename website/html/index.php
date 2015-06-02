@@ -51,7 +51,7 @@
                     <option value='minutes'>Minutes</option>
                 </select><br><br>
                 <label>Tag: </label><input name='tag' id='addTagName' type='text' placeholder='Tag'><br><br>
-                <input id='addTask' type='submit' value='Add' name='submit'>
+                <input id='applyTask' type='submit' value='Apply' name='submit'>
             </form>
 
             <!-- To do list -->
