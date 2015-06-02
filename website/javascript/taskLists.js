@@ -17,13 +17,23 @@ function TasksLists() {
 
     this.currentList = this.allTasks;
     this.listState = "default";
+    this.editing = false;
 
     /**
-     * Adds a task to the main task list
+     * Adds a task to the main task list after checking inputs
+     * Also checks whether or not the task is being added or edited
      *
      * @param task
      */
     this.addTask = function (task) {
+        if (task.id < 0) {
+            task.id = this.idCount++;
+        }
+        var taskIndex = this.getTaskIndex(task.id);
+        if (this.editing) {
+            this.allTasks[taskIndex] = task;
+        }
+
         var tagIndex = this.hasTag(task.tag);
         if (tagIndex > -1) {
             task.tag = this.allTags[tagIndex];
@@ -31,29 +41,44 @@ function TasksLists() {
         else {
             task.tag = this.allTags[0];
         }
-        console.log(tagIndex);
-        console.log(task.tag);
-        if (task.id < 0) {
-            task.id = this.idCount++;
-        }
 
-        this.allTasks.push(task);
-        this.taskCount++;
+        if (!this.editing) {
+            this.allTasks.push(task);
+            this.taskCount++;
+        }
+        this.editing = false;
         this.sortAll();
         this.switchList(this.listState);
     };
 
     /**
-     * Returns the task given an idd
+     * Returns the task given an id
      *
      * @param taskId
-     * @returns {*}: if taskId exists in the list, returns the task
-     *               if taskId doesn't exist in the list, returns false
+     * @returns {*}: If taskId exists in the list, returns the task
+     *               If taskId doesn't exist in the list, returns false
      */
     this.getTask = function (taskId) {
         for (var i = 0; i < this.allTasks.length; i++) {
             if (this.allTasks[i].id == taskId) {
                 return this.allTasks[i];
+            }
+        }
+        return false;
+    };
+
+    /**
+     * Returns the task index in allTasks given an id
+     *
+     * @param taskId
+     * @returns {*}: If taskId exists in the list, returns the task index
+     *               If taskId doesn't exist in the list, returns false
+     */
+    this.getTaskIndex = function (taskId) {
+        for (var i = 0; i < this.allTasks.length; i++) {
+            if (this.allTasks[i].id == taskId) {
+                console.log("Index: " + i);
+                return i;
             }
         }
         return false;
@@ -81,7 +106,7 @@ function TasksLists() {
      *
      * @param type
      * @returns {number}: 0+ the index of the tag if it is there
-     *                    -1 there was no match
+     *                    -2 there was no match
      */
     this.hasTag = function (type) {
         for (var tagIndex = 0; tagIndex < this.allTags.length; tagIndex++) {
@@ -89,7 +114,7 @@ function TasksLists() {
                 return tagIndex;
             }
         }
-        return -1;
+        return -2;
     };
 
     /**
