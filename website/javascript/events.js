@@ -66,6 +66,7 @@ $(document).ready(function () {
         e.preventDefault();
 
         if (editId) {
+            editId = null;
             $("#addTask").text("Add item");
             $("#removeTask").text("Remove item");
             $("#addTaskName").val("");
