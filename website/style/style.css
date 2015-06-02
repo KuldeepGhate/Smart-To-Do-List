@@ -177,7 +177,7 @@ table tr:first-child th:last-child {
 
 table tr {
     text-align: center;
-    padding-left: 20px;
+    padding-left: 10px;
     background-color: #FFFFCC;
 }
 
@@ -224,8 +224,8 @@ table tr:hover td {
 #divFinishedTable {
     width: 200px;
     float: right;
-    /*margin: 30px 0 0;*/
-    background-color: #754719;
+    
+    
 }
 
 .button {
@@ -305,7 +305,7 @@ margin-top: 30px;
 }
 form
 {
-    background-color: black;
+    
     padding-left: 0%;
     margin-right: 18%;
     margin-left: 40%;
