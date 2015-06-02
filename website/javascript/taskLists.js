@@ -17,9 +17,11 @@ function TasksLists() {
 
     this.currentList = this.allTasks;
     this.listState = "default";
+    this.editing = false;
 
     /**
-     * Adds a task to the main task list
+     * Adds a task to the main task list after checking inputs
+     * Also checks whether or not the task is being added or edited
      *
      * @param task
      */
@@ -28,7 +30,7 @@ function TasksLists() {
             task.id = this.idCount++;
         }
         var taskIndex = this.getTaskIndex(task.id);
-        if (taskIndex) {
+        if (this.editing) {
             this.allTasks[taskIndex] = task;
         }
 
@@ -40,10 +42,11 @@ function TasksLists() {
             task.tag = this.allTags[0];
         }
 
-        if (!taskIndex) {
+        if (!this.editing) {
             this.allTasks.push(task);
+            this.taskCount++;
         }
-        this.taskCount++;
+        this.editing = false;
         this.sortAll();
         this.switchList(this.listState);
     };
@@ -74,6 +77,7 @@ function TasksLists() {
     this.getTaskIndex = function (taskId) {
         for (var i = 0; i < this.allTasks.length; i++) {
             if (this.allTasks[i].id == taskId) {
+                console.log("Index: " + i);
                 return i;
             }
         }
@@ -102,7 +106,7 @@ function TasksLists() {
      *
      * @param type
      * @returns {number}: 0+ the index of the tag if it is there
-     *                    -1 there was no match
+     *                    -2 there was no match
      */
     this.hasTag = function (type) {
         for (var tagIndex = 0; tagIndex < this.allTags.length; tagIndex++) {
@@ -110,7 +114,7 @@ function TasksLists() {
                 return tagIndex;
             }
         }
-        return -1;
+        return -2;
     };
 
     /**

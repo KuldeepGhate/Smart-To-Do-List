@@ -16,10 +16,14 @@ function Tag(tagName, tagColor) {
      * @returns {boolean}
      */
     this.match = function (tag) {
-        var matches = this.tagName.match(tag.tagName);
-        if (matches == tag.tagName) {
-            return true;
+        var matches;
+        var matchString;
+        if (tag.tagName) {
+            matchString = tag.tagName;
         }
-        return false;
+        else {
+            matchString = tag;
+        }
+        return this.tagName.match(matchString) == matchString;
     }
 }

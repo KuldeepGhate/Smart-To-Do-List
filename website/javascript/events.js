@@ -14,19 +14,27 @@ $(document).ready(function () {
 
         var newTag = $("#addTagName").val();
         var newTaskName = $("#addTaskName").val();
+
+        if (newTaskName == "") {
+            alert("Task name cannot be null.");
+            return;
+        }
+
         var newDueDate = new Date($("#addDate").val());
         var newAlarm = getAlarmTime();
         var newTask = new Task(newTaskName, newTag, newDueDate, newAlarm);
         if (editId) {
             newTask.id = editId;
             editId = null;
-            $("#addTask").text("Add item");
-            $("#removeTask").text("Remove item");
-            $("#addTaskName").val("");
-            $("#addTagName").val("");
+            editingReset();
+
+            /*
+             * INSERT AJAX CALL HERE
+             */
         }
         masterList.addTask(newTask);
 
+        $("#addTaskForm")[0].reset();
         $("#todoTasks").html(masterList.generateList());
 
         /*
@@ -37,6 +45,7 @@ $(document).ready(function () {
     // After clicking the edit button
     $("#editTask").click(function () {
         var taskToEdit;
+        masterList.editing = true;
 
         $("#todoTasks tr").each(function (i, row) {
             //Reference all the stuff I need
@@ -48,6 +57,10 @@ $(document).ready(function () {
                 taskToEdit = masterList.getTask(id);
             });
         });
+
+        if (taskToEdit == null) {
+            return;
+        }
         editId = taskToEdit.id;
         $("#addTaskName").val(taskToEdit.taskName);
         // DateTime and alarm time pre-population aren't working
@@ -55,10 +68,6 @@ $(document).ready(function () {
 
         $("#addTask").text("Apply Edit");
         $("#removeTask").text("Cancel Edit");
-
-        /*
-         * INSERT AJAX CALLS TO PHP HERE
-         */
     });
 
     // After selecting a task and clicking the remove button
@@ -66,11 +75,9 @@ $(document).ready(function () {
         e.preventDefault();
 
         if (editId) {
+            masterList.editing = false;
             editId = null;
-            $("#addTask").text("Add item");
-            $("#removeTask").text("Remove item");
-            $("#addTaskName").val("");
-            $("#addTagName").val("");
+            editingReset();
             return;
         }
 
@@ -92,6 +99,16 @@ $(document).ready(function () {
         $("#finishedTasks").html(masterList.generateFinishedList());
     });
 });
+
+/**
+ * Resets the form after editing
+ */
+function editingReset() {
+    $("#addTask").text("Add item");
+    $("#removeTask").text("Remove item");
+    $("#addTaskName").val("");
+    $("#addTagName").val("");
+}
 
 /**
  * Takes the alarm parameters from the add form and transforms it for a task
@@ -118,6 +135,12 @@ function getAlarmTime() {
     return false;
 }
 
+/**
+ * Takes the taskDueDate (in epoch) and converts it back to human-readable time
+ *
+ * @param taskDueDate
+ * @returns {Date}
+ */
 function getHumanTime(taskDueDate) {
     return new Date(taskDueDate * 1000);
 }
