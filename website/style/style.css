@@ -273,27 +273,32 @@ table tr:hover td {
 #addTaskName
 {
 background-color: #FFFFCC;
+margin-left: 2%;
 
 }
 #addTaskName1
 {
 background-color: #FFFFCC;
+margin-left: 2%;
 
 }
 #addDate
 {
    background-color: #FFFFCC; 
-   margin-left: 30%;
+   margin-left: 2%;
 }
 #addAlarm
 {
     background-color: #FFFFCC; 
+    margin-left: 1%;
 }
 #addAlarmDate
 {
     background-color: #FFFFCC; 
+    margin-left: 1%;
 }
 #addTagName
 {
     background-color: #FFFFCC; 
+    margin-left: 1%;
 }

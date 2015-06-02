@@ -34,26 +34,15 @@
             </div>
 
             <!-- Add Form -->
-            <label for="addTaskForm">Add Task</label>
-
+            
             <form action="form.php" id="addTaskForm" method="post">
                 <h2>Task Manager</h2>
+                <!--<label for="addTaskForm">Add Task</label>-->
                 <label for="addTaskName">Task Name: </label><input type='text' id='addTaskName' name='taskName'><br><br>
                 <label for="addDate">Due Date:</label><input type='datetime-local' id='addDate' placeholder='Select Date' name='dueDate'><br><br>
                 <label for="addAlarm">Alarm: </label><input type='checkbox' id='addAlarm' name='yes' value='true'><br><br>
                 <label for="addAlarmDate">How long before would you like the alarm? </label><input type='number' id='addAlarmDate' name='time' min='1' max='60'>
-<<<<<<< HEAD
-                <select id='timeSelect'>
-=======
-                <label for="addTaskName1">Task Name: </label><input type='text' id='addTaskName1' name='taskName'><br>
-                <label for="addDate">Due Date:</label><input type='datetime-local' id='addDate' placeholder='Select Date' name='dueDate'><br><br>
-                <label for="addAlarm">Alarm: </label><input type='checkbox' id='addAlarm' name='yes' value='true'><br><br>
-                <label for="addAlarmDate">How long before would you like the alarm? </label><input type='number' id='addAlarmDate' name='time' min='1' max='60'>
-                <label for="timeSelect">Units: </label><select id='timeSelect'>
->>>>>>> 09032948fd468514bdfa0b501d480ae1e533cc96
-                    <option value='hours'>Hours</option>
-                    <option value='minutes'>Minutes</option>
-                </select><br><br>
+                <select id='timeSelect'><option value='hours'>Hours</option><option value='minutes'>Minutes</option></select><br><br>
                 <label>Tag: </label><input name='tag' id='addTagName' type='text' placeholder='Tag'><br><br>
                 <input id='applyTask' type='submit' value='Apply' name='submit'>
             </form>
