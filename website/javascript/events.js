@@ -2,10 +2,18 @@ $(document).ready(function () {
     var editId = null;
     $("#todoTasks").html(masterList.generateList());
     $("#finishedTasks").html(masterList.generateFinishedList());
+    $("#addTagName").html(masterList.generateTagOptions());
+    $("#sortSelect").html(masterList.generateTagOptions());
 
     $("#content").click(function () {
         masterList.refresh();
         $("#finishedTasks").html(masterList.generateFinishedList());
+    });
+
+    // After clicking the sort button
+    $("#sortTasks").click(function () {
+        masterList.switchList($("#sortSelect").val());
+        $("#todoTasks").html(masterList.generateList());
     });
 
     // After clicking the add button

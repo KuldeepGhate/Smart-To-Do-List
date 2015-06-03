@@ -123,7 +123,7 @@ function TasksLists() {
      * @param state: a string, the desired state of the currentList
      */
     this.switchList = function (state) {
-        if (state == "default") {
+        if (state == "None") {
             this.currentList = this.allTasks;
         }
         else {
@@ -176,6 +176,20 @@ function TasksLists() {
         for (var i = 0; i < this.allTasks.length; i++) {
             setPriority(this.allTasks[i]);
         }
+    };
+
+    /**
+     * Generates the tag options
+     *
+     * @returns {string}: The html for the tag options
+     */
+    this.generateTagOptions = function () {
+        var optionsHtml = "";
+
+        for (var i = 0; i < this.allTags.length; i++) {
+            optionsHtml = optionsHtml.concat("<option value='" + this.allTags[i].tagName + "'>" + this.allTags[i].tagName + "</option>");
+        }
+        return optionsHtml;
     };
 
     /**
