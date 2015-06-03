@@ -7,14 +7,14 @@ var masterList = new TasksLists();
 
 var date = new Date();
 
-var task1 = new Task("run", masterList.allTags[0], null, false);
-var task2 = new Task("homework", masterList.allTags[2], null, false);
-var task3 = new Task("fun", masterList.allTags[3], (date.getTime() + 8630000000), false);
-var task4 = new Task("blah", masterList.allTags[1], (date.getTime() + 8650000000), false);
-var task5 = new Task("REALLREALLY LONG TASK NAME WOW SO LONG", masterList.allTags[2], (date.getTime() + 370000000), false);
-var task6 = new Task("testing", "FAILTAG", (date.getTime() + 350000000), false);
-var task7 = new Task("yay", masterList.allTags[1], (date.getTime() - 10), false);
-var task8 = new Task("aklsdfj", masterList.allTags[2], (date.getTime() - 10), false);
+var task1 = new Task("Go for a run", masterList.allTags[0], null, false);
+var task2 = new Task("Finish homework", masterList.allTags[1], null, false);
+var task3 = new Task("Watch movie", masterList.allTags[4], (date.getTime() + 8630000000), false);
+var task4 = new Task("Clean room", masterList.allTags[3], (date.getTime() + 8650000000), false);
+var task5 = new Task("Fight crime", masterList.allTags[2], (date.getTime() + 370000000), false);
+var task6 = new Task("Study for test", masterList.allTags[1], (date.getTime() + 350000000), false);
+var task7 = new Task("Finish book", masterList.allTags[3], (date.getTime() - 10), false);
+var task8 = new Task("Finish project", masterList.allTags[1], (date.getTime() - 10), false);
 
 masterList.addTask(task1);
 masterList.addTask(task2);

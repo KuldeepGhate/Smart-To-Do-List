@@ -38,7 +38,7 @@ h2 {
 
 .big-heading {
     color: #FFFFCC;
-    font-family: 'Rouge Script', cursive;
+    font-family: sans-serif;
     font-size: 80px;
     font-weight: normal;
     line-height: 48px;
@@ -63,8 +63,19 @@ h2 {
     margin-left: 0%;
 }
 
-#todo input {
-    margin-bottom: 30px;
+#todo table input {
+    margin-top: 25px;
+    margin-bottom: 25px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 10px;
+}
+
+#todo form input {
+    margin-bottom: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 3px;
 }
 
 #todo form a {
@@ -77,7 +88,7 @@ h2 {
 }
 
 #todo label {
-    background-image:url("../resources/woodbutton.jpeg");
+    background-image: url("../resources/woodbutton.jpeg");
     border: 2px solid black;
     padding-right: 10px;
     padding-top: 5px;
@@ -218,20 +229,23 @@ table tr:last-child td:last-child {
 }
 
 table tr:hover td {
-    /*background: #f2f2f2;
-    background: -webkit-gradient(linear, left top, left bottom, from(#64b5f6), to(#f0f0f0));
-    background: -moz-linear-gradient(top,  #f2f2f2,  #f0f0f0);  */
     background-image: url("../resources/woodbutton.jpeg");
 }
 
+.alarmButton {
+}
+
 #finishedTasks {
-    margin: 0px;
+    margin: 0;
 
 }
 
 #divFinishedTable {
-    width: 150px;
     float: right;
+}
+
+#divFinishedTable tr {
+    width: 200px;
 
 }
 
@@ -252,9 +266,9 @@ table tr:hover td {
     text-shadow: #A0522D;
     border: 4px outset #AD5C33;
 
-    margin-right: 10%;
-    margin-top: 7%;
-    margin-left: 15%;
+    margin-right: 5%;
+    margin-top: 5%;
+    margin-left: 10%;
 }
 
 .button:hover {
@@ -264,73 +278,81 @@ table tr:hover td {
 
 .button:active {
     position: relative;
-
     top: 1px;
 }
 
 #divTasksTable {
     float: left;
-    padding-left: 0%;
+    padding-left: 0;
 
 }
 
 #divFinishedTasks {
     float: right;
-    margin-top: 0px;
-    padding: 0px;
+    margin-top: 0;
+    padding: 0;
 
 }
-#addTaskName
-{
+
+#addTaskForm {
+    font-size: 18px;
+}
+
+#addTaskForm input {
+    font-size: 14px;
+}
+
+#addTaskName {
     background-color: #FFFFCC;
-    margin-left: 2%;
     position: relative;
     margin-top: 30px;
 }
 
-#addDate
-{
+#addDate {
     background-color: #FFFFCC;
-    margin-left: 2%;
     position: relative;
 }
-#addAlarm
-{
+
+#addAlarm {
     background-color: #FFFFCC;
-    margin-left: 1%;
     position: relative;
 }
-#addAlarmDate
-{
+
+#addAlarmDate {
     background-color: #FFFFCC;
-    margin-left: 1%;
     position: relative;
 
 }
-#addTagName
-{
+
+#addTagName {
     background-color: #FFFFCC;
-    margin-left: 1%;
 }
 
 form {
-
-    padding-left: 0%;
+    padding-left: 0;
     margin-right: 15%;
-    margin-left: 40%;
+    margin-left: 30%;
 
+}
+
+label {
+    padding: 5px;
+    margin-right: 10px;
+}
+
+#sortSelect {
+    margin-left: 10px;
 }
 
 #clock {
     position: relative;
+    margin-right: 50px;
     width: 200px;
     z-index: 0;
     height: 200px;
     float: right;
     bottom: 250px;
-    vertical-align: right;
     right: 80px;
-    background: url("../resources/roundcircle.jepg");
     list-style: none;
 }
 
@@ -338,11 +360,9 @@ form {
     position: absolute;
     width: 20px;
     height: 600px;
-    top: 0px;
+    top: 0;
     left: 200px;
     bottom: 300px;
-
-    /*left: 285px;*/
 }
 
 #sec {

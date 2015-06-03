@@ -12,7 +12,7 @@ function TasksLists() {
         new Tag("School", "red"),
         new Tag("Work", "green"),
         new Tag("Life", "blue"),
-        new Tag("Food", "brown")
+        new Tag("Fun", "brown")
     ];
 
     this.currentList = this.allTasks;
@@ -204,7 +204,7 @@ function TasksLists() {
         for (var i = 0; i < this.currentList.length; i++) {
             var task = this.currentList[i];
             htmlString = htmlString.concat("<tr id='" + task.id + "'><td>" + task.taskName + "</td><td>" + task.tag.tagName +
-                "</td><td><input type='radio' name='test' value='testing'/></td></tr>");
+                "</td><td><input type='radio' name='alarm' class='alarmButton' value='testing'/></td></tr>");
         }
         return htmlString;
     };

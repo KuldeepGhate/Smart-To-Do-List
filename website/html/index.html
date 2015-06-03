@@ -42,16 +42,16 @@
 
             <!-- Add Form -->
             <form id="addTaskForm">
-                <label for="addTaskName">Task Name: </label><input type='text' id='addTaskName' name='taskName'><br><br>
+                <label for="addTaskName">Task Name:</label><input type='text' id='addTaskName' name='taskName' size="50"><br><br>
                 <label for="addDate">Due Date:</label><input type='datetime-local' id='addDate' placeholder='Select Date' name='dueDate'><br><br>
-                <label for="addAlarm">Alarm: </label><input type='checkbox' id='addAlarm' name='yes' value='true'><br><br>
-                <label for="addAlarmDate">How long before would you like the alarm? </label><input type='number' id='addAlarmDate' name='time' min='1' max='60'>
-                <label for="timeSelect">Units: </label><select id='timeSelect'>
-                <option value='hours'>Hours</option>
-                <option value='minutes'>Minutes</option>
-            </select><br><br>
-                <label for="addTagName">Tag: </label><select id="addTagName">
-            </select><br><br>
+                <label for="addAlarm">Alarm:</label><input type='checkbox' id='addAlarm' name='yes' value='true'><br><br>
+                <label for="addAlarmDate">How long before would you like the alarm?</label><input type='number' id='addAlarmDate' name='time' min='1' max='60' size="10">
+                <select id='timeSelect'>
+                    <option value='hours'>Hours</option>
+                    <option value='minutes'>Minutes</option>
+                </select><br><br><br>
+                <label for="addTagName">Tag:</label><select id="addTagName">
+            </select><br>
             </form>
 
             <!-- To do list -->
@@ -63,18 +63,18 @@
 
             <!-- Buttons -->
             <form id="buttonForm">
-                <label for="sortSelect">Tag to sort by: </label><select id="sortSelect"></select>
-                <a id="sortTasks" class="button">Sort Tasks</a><br>
                 <a id="addTask" class="button">Add Task</a>
                 <a id="editTask" class="button">Edit Task</a>
-                <a id="removeTask" class="button">Remove Task</a>
-
+                <a id="removeTask" class="button">Remove Task</a><br><br>
+                <a id="sortTasks" class="button">Sort Tasks</a>
+                <label for="sortSelect">Tag to sort by:</label><select id="sortSelect"></select>
             </form>
 
         </div>
     </div>
 
 </div>
+<br><br><br><br><br>
 <div id="footer">
     <h5 class="small-heading"><a href="https://github.com/Bluesroo/COEN-276-Project">copy @ RKJProject</a></h5>
 </div>
