@@ -20,16 +20,19 @@ var date = new Date();
 $(document).ready(function () {
     var task = new Array();
 
-
-    $.getJSON("tasks.json", function (tasks_json) {
-            for (var i in tasks_json.tasks) {
-                //		task[i] = tasks_json.tasks[i];
-                task.push(new Task(tasks_json.tasks[i].taskName, tasks_json.tasks[i].tag, tasks_json.tasks[i].dueDate, tasks_json.tasks[i].alarm));
-                //console.log(task[i]);
+            $.ajax({
+            url: '../phpscripts/functionSwitch.php',
+            data: {
+                action: 'load'
+            },
+            type: 'post',
+            success: function (output) {
+                console.log(output);
+                var tasks = jQuery.parseJSON(output);
+                console.log(tasks);
             }
-        }
-    );
-    console.log(task.length);
+        });   
+            console.log(task.length);
 
     for (var i in task) {
         masterList.addTask(task[i]);
