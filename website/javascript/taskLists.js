@@ -202,7 +202,7 @@ function TasksLists() {
         htmlString = htmlString.concat("<tr></tr><tr><th>Name</th><th>Tag</th><th>Checkbox</th></tr>");
         for (var i = 0; i < this.currentList.length; i++) {
             var task = this.currentList[i];
-            htmlString = htmlString.concat("<tr id='" + task.id + "'><td>" + task.taskName + "</td><td>" + task.tag.tagName +
+            htmlString = htmlString.concat("<tr id='" + task.id + "' class='" + task.priority + "'><td>" + task.taskName + "</td><td>" + task.tag.tagName +
                 "</td><td><input type='radio' name='test' value='testing'/></td></tr>");
         }
         return htmlString;
@@ -219,7 +219,7 @@ function TasksLists() {
         htmlString = htmlString.concat("<tr></tr><tr><th>Name</th><th>Tag</th></tr>");
         for (var i = this.doneTasks.length - 1; i > -1; i--) {
             var task = this.doneTasks[i];
-            htmlString = htmlString.concat("<tr id='" + task.id + "'><td>" + task.taskName + "</td><td>" + task.tag.tagName + "</td></tr>");
+            htmlString = htmlString.concat("<tr id='" + task.id + "' class='" + task.priority + "'><td>" + task.taskName + "</td><td>" + task.tag.tagName + "</td></tr>");
         }
         return htmlString;
     }

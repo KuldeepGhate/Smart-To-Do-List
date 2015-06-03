@@ -1,20 +1,30 @@
 $(document).ready(function () {
     var editId = null;
-    $("#todoTasks").html(masterList.generateList());
-    $("#finishedTasks").html(masterList.generateFinishedList());
-    $("#addTagName").html(masterList.generateTagOptions());
-    $("#sortSelect").html(masterList.generateTagOptions());
 
-
-    $.ajax({
+    var jsonOutput;
+    $.when($.ajax({
         url: '../phpscripts/functionSwitch.php',
-        data: {action: 'load'},
+        data: {
+            action: 'load'
+        },
         type: 'post',
         success: function (output) {
-         //   console.log("Return: " + output);
+            jsonOutput = JSON.parse(output);
         }
+    })).then(function () {
+        console.log(jsonOutput);
+        var taskArray = jsonOutput.tasks;
+        for (var i in taskArray) {
+            var newTask = new Task(taskArray[i].taskName, taskArray[i].tag, taskArray[i].dueDate, taskArray[i].alarmTime);
+            masterList.addTask(newTask);
+            console.log(newTask);
+        }
+        $("#todoTasks").html(masterList.generateList());
+        $("#finishedTasks").html(masterList.generateFinishedList());
+        $("#addTagName").html(masterList.generateTagOptions());
+        $("#sortSelect").html(masterList.generateTagOptions());
+        console.log(masterList);
     });
-
 
     // Refreshes the tasks
     $("#content").click(function () {
@@ -132,8 +142,8 @@ $(document).ready(function () {
                         removeId: finishedTaskId
                     },
                     type: 'post',
-                    success: function () {
-                        console.log("Finish of " + finishedTaskId + " successful.");
+                    success: function (output) {
+                        console.log("Finish of " + output + " successful.");
                     }
                 });
             });

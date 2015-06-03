@@ -14,7 +14,7 @@ if (isset($_POST['action']) && !empty($_POST['action'])) {
             pushToJSON($_POST['jsonPush']);
             break;
         case 'finish' :
-            removeFromJSON($_POST['removeId']);
+            echo removeFromJSON($_POST['removeId']);
             break;
         case 'edit' :
             editJSON($_POST['jsonPush'], $_POST['editId']);
