@@ -1,5 +1,4 @@
 <?php
 function loadJSON() {
-    $jsonString = "test";
-    return $jsonString;
+    return $tempArray = file_get_contents('../data/taskList.json');
 }

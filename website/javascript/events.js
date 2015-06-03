@@ -5,6 +5,17 @@ $(document).ready(function () {
     $("#addTagName").html(masterList.generateTagOptions());
     $("#sortSelect").html(masterList.generateTagOptions());
 
+
+    $.ajax({
+        url: '../phpscripts/functionSwitch.php',
+        data: {action: 'load'},
+        type: 'post',
+        success: function (output) {
+            console.log("Return: " + output);
+        }
+    });
+
+
     // Refreshes the tasks
     $("#content").click(function () {
         masterList.refresh();
