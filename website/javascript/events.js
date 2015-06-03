@@ -56,31 +56,44 @@ $(document).ready(function () {
             newTask.id = editId;
             editId = null;
             editingReset();
-
-            /*
-             * INSERT AJAX CALL HERE
-             */
         }
         masterList.addTask(newTask);
 
-        $.ajax({
-            url: '../phpscripts/functionSwitch.php',
-            data: {
-                action: 'push',
-                jsonPush: {
-                    "taskName": newTask.taskName,
-                    "tag": newTask.tag.tagName,
-                    "id": newTask.id,
-                    "dueDate": newTask.dueDate,
-                    "alarmTime": newTask.alarmTime
+        if (editId) {
+            $.ajax({
+                url: '../phpscripts/functionSwitch.php',
+                data: {
+                    "action": 'finish',
+                    "taskName": newTaskName,
+                    "tag": newTag,
+                    "removeId": editId,
+                    "dueDate": newDueDate,
+                    "alarmTime": newAlarm
+                },
+                type: 'post',
+                success: function (output) {
+                    console.log(output);
                 }
-            },
-            type: 'post',
-            success: function (output) {
-                console.log("Push of " + newTask.id + " successful.");
-            }
-        });
-
+            });
+        } else {
+            $.ajax({
+                url: '../phpscripts/functionSwitch.php',
+                data: {
+                    action: 'push',
+                    jsonPush: {
+                        "taskName": newTask.taskName,
+                        "tag": newTask.tag.tagName,
+                        "id": newTask.id,
+                        "dueDate": newTask.dueDate,
+                        "alarmTime": newTask.alarmTime
+                    }
+                },
+                type: 'post',
+                success: function (output) {
+                    console.log("Push of " + newTask.id + " successful.");
+                }
+            });
+        }
         $("#addTaskForm")[0].reset();
         $("#todoTasks").html(masterList.generateList());
 
@@ -126,25 +139,13 @@ $(document).ready(function () {
         }
 
         $("#todoTasks tr").each(function (i, row) {
-           //Reference all the stuff I need
+            //Reference all the stuff I need
             var rowHtml = $(row);
             var check = rowHtml.find("input:checked");
 
             check.each(function () {
                 var finishedTaskId = $(rowHtml).attr("id");
                 masterList.finishTask(finishedTaskId);
-
-                $.ajax({
-                    url: '../phpscripts/functionSwitch.php',
-                    data: {
-                        action: 'finish',
-                        removeId: finishedTaskId
-                    },
-                    type: 'post',
-                    success: function (output) {
-                        console.log(output);
-                    }
-                });
             });
         });
         $("#todoTasks").html(masterList.generateList());

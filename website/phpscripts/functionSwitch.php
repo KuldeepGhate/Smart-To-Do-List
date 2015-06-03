@@ -13,7 +13,7 @@ if (isset($_POST['action']) && !empty($_POST['action'])) {
             pushToJSON($_POST['jsonPush']);
             break;
         case 'finish' :
-            echo removeFromJSON($_POST['removeId']);
+            echo removeFromJSON($_POST['taskName'], $_POST['tag'], $_POST['removeId'], $_POST['dueDate'], $_POST['alarmTime']);
             break;
     }
 }
