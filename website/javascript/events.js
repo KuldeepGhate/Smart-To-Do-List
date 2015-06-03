@@ -5,6 +5,19 @@ $(document).ready(function () {
     $("#addTagName").html(masterList.generateTagOptions());
     $("#sortSelect").html(masterList.generateTagOptions());
 
+    $.ajax({
+        url: '../phpscripts/functionSwitch.php',
+        data: {
+            action: 'test',
+            jsonPush: {"taskName": "Fat", "tag": "Blah", "id": 3, "alarmTime": 3441943544, "dueDate": 3441943844}
+        },
+        type: 'post',
+
+        success: function (output) {
+            console.log(output);
+        }
+    });
+
     // Refreshes the tasks
     $("#content").click(function () {
         masterList.refresh();
@@ -45,10 +58,6 @@ $(document).ready(function () {
 
         $("#addTaskForm")[0].reset();
         $("#todoTasks").html(masterList.generateList());
-
-        /*
-         * INSERT AJAX CALLS TO PHP HERE
-         */
 
     });
 
