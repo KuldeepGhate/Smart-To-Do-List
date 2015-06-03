@@ -13,7 +13,8 @@ $(document).ready(function () {
 
     // After clicking the sort button
     $("#sortTasks").click(function () {
-
+        masterList.switchList($("#sortSelect").val());
+        $("#todoTasks").html(masterList.generateList());
     });
 
     // After clicking the add button

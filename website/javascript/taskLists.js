@@ -77,7 +77,6 @@ function TasksLists() {
     this.getTaskIndex = function (taskId) {
         for (var i = 0; i < this.allTasks.length; i++) {
             if (this.allTasks[i].id == taskId) {
-                console.log("Index: " + i);
                 return i;
             }
         }
@@ -123,7 +122,7 @@ function TasksLists() {
      * @param state: a string, the desired state of the currentList
      */
     this.switchList = function (state) {
-        if (state == "default") {
+        if (state == "None") {
             this.currentList = this.allTasks;
         }
         else {
