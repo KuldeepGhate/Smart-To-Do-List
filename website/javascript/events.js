@@ -11,7 +11,7 @@ $(document).ready(function () {
         data: {action: 'load'},
         type: 'post',
         success: function (output) {
-            console.log("Return: " + output);
+         //   console.log("Return: " + output);
         }
     });
 

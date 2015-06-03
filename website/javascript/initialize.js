@@ -18,7 +18,7 @@ var date = new Date();
  */
 
 $(document).ready(function () {
-    var task = new Array();
+    var task = [];
 
             $.ajax({
             url: '../phpscripts/functionSwitch.php',
@@ -27,16 +27,19 @@ $(document).ready(function () {
             },
             type: 'post',
             success: function (output) {
-                console.log(output);
                 var tasks = jQuery.parseJSON(output);
-                console.log(tasks);
+                console.log(tasks.tasks[0].taskName);
+                for (var i in tasks.tasks) {
+                    task[i]=new Task(tasks.tasks[i].taskName,tasks.tasks[i].tag,tasks.tasks[i].dueDate,tasks.tasks[i].alarm);
+                    masterList.addTask(task[i]);
+                    console.log(task[i]);
+                }
+                console.log(task.length);
             }
         });   
-            console.log(task.length);
-
-    for (var i in task) {
-        masterList.addTask(task[i]);
-    }
+            
+$("#todoTasks").html(masterList.generateList());
+    $("#finishedTasks").html(masterList.generateFinishedList());
 
 });
 /*
