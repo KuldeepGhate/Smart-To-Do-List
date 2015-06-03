@@ -269,6 +269,8 @@ table tr:hover td {
 
 #divFinishedTasks {
     float: right;
+    margin-top: 0px;
+    padding: 0px;
    
 }
 #addTaskName
