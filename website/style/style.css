@@ -2,6 +2,9 @@
     font-weight: normal;
     font-family: sans-serif;
     text-decoration: none;
+    margin: 0;
+    padding: 0;
+    
 }
 
 body {
@@ -13,13 +16,13 @@ a {
 }
 
 a:link {
-    color: #666;
+    color: #FFFFCC;
     font-weight: bold;
     text-decoration: none;
 }
 
 a:visited {
-    color: #666;
+    color: #FFFFCC;
     font-weight: bold;
     text-decoration: none;
 }
@@ -34,7 +37,7 @@ h2 {
 }
 
 .big-heading {
-    color: #CEF0D4;
+    color: #FFFFCC;
     font-family: 'Rouge Script', cursive;
     font-size: 80px;
     font-weight: normal;
@@ -66,7 +69,7 @@ h2 {
 
 #todo form a {
     margin-left: 1%;
-    padding: 1%;
+    padding: 2%;
     font-weight: bold;
     color: black;
     border: 2px solid black;
@@ -123,6 +126,11 @@ h2 {
 
 #footer {
     text-align: center;
+    margin-bottom: 2%;
+}
+.small-heading
+{
+    color: #FFFFCC;
 }
 
 /* ---------------------------------------------------------------
@@ -222,7 +230,7 @@ table tr:hover td {
 }
 
 #divFinishedTable {
-    width: 200px;
+    width: 150px;
     float: right;
     
     
@@ -309,7 +317,52 @@ form
 {
     
     padding-left: 0%;
-    margin-right: 18%;
+    margin-right: 15%;
     margin-left: 40%;
 
 }
+#clock {
+            position: relative;
+            width: 200px;
+            z-index: 0;
+            height: 200px;
+            float:right;
+            bottom:250px;
+            vertical-align: right;
+            right:80px;
+            background: url("../resources/roundcircle.jepg");
+            list-style: none;
+            }
+        
+        #sec, #min, #hour {
+            position: absolute;
+            width: 20px;
+            height: 600px;
+            top: 0px;
+            left:200px;
+            bottom:300px;
+
+            /*left: 285px;*/
+            }
+        
+        #sec {
+            background: url("../resources/sechand.png");
+            z-index: 0;
+            }
+           
+        #min {
+            background: url("../resources/minhand.png");
+            z-index: 0;
+            }
+           
+        #hour {
+            background: url("../resources/hourhand.png");
+            z-index: 0;
+            }
+            
+        p {
+            text-align: center; 
+            padding: 5px 0 0 0;
+            }
+
+

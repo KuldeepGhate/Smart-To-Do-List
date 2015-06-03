@@ -12,15 +12,24 @@
     <script src="../javascript/taskLists.js"></script>
     <script src="../javascript/initialize.js"></script>
     <script src="../javascript/events.js"></script>
+    <script src="../javascript/clockJavaScript.js"></script>
+
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script type="text/javascript" src="../javascript/jQuery/jquery-1.2.6.min.js"></script>
 
 </head>
 
 <body>
 <div id="container">
+
     <div id="header">
         <h1 class="big-heading">The Best To Do List</h1>
     </div>
+    <ul id="clock"> 
+        <li id="sec"></li>
+        <li id="hour"></li>
+        <li id="min"></li>
+    </ul>
 
     <!-- The Lists -->
     <div id="content">
@@ -56,20 +65,20 @@
 
             <!-- Buttons -->
             <form id="buttonForm">
+                <label for="sortSelect">Tag to sort by: </label><select id="sortSelect"></select>
+                <a id="sortTasks" class="button">Sort Tasks</a><br>
                 <a id="addTask" class="button">Add Task</a>
                 <a id="editTask" class="button">Edit Task</a>
                 <a id="removeTask" class="button">Remove Task</a>
-                <label for="sortSelect">Tag to sort by: </label><select id="sortSelect">
-            </select>
-                <a id="sortTasks" class="button">Sort Tasks</a>
+                
             </form>
 
         </div>
     </div>
 
+</div>
     <div id="footer">
         <h5 class="small-heading"><a href="https://github.com/Bluesroo/COEN-276-Project">copy @ RKJProject</a></h5>
     </div>
-</div>
 </body>
 </html>
