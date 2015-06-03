@@ -2,6 +2,9 @@
     font-weight: normal;
     font-family: sans-serif;
     text-decoration: none;
+    margin: 0;
+    padding: 0;
+
 }
 
 body {
@@ -13,13 +16,13 @@ a {
 }
 
 a:link {
-    color: #666;
+    color: #FFFFCC;
     font-weight: bold;
     text-decoration: none;
 }
 
 a:visited {
-    color: #666;
+    color: #FFFFCC;
     font-weight: bold;
     text-decoration: none;
 }
@@ -34,7 +37,7 @@ h2 {
 }
 
 .big-heading {
-    color: #CEF0D4;
+    color: #FFFFCC;
     font-family: 'Rouge Script', cursive;
     font-size: 80px;
     font-weight: normal;
@@ -57,7 +60,7 @@ h2 {
 }
 
 #todo {
-    margin-left: 10%;
+    margin-left: 0%;
 }
 
 #todo input {
@@ -66,7 +69,7 @@ h2 {
 
 #todo form a {
     margin-left: 1%;
-    padding: 1%;
+    padding: 2%;
     font-weight: bold;
     color: black;
     border: 2px solid black;
@@ -123,6 +126,11 @@ h2 {
 
 #footer {
     text-align: center;
+    margin-bottom: 2%;
+}
+
+.small-heading {
+    color: #FFFFCC;
 }
 
 /* ---------------------------------------------------------------
@@ -153,7 +161,7 @@ table {
     text-shadow: 1px 1px 0px #fff;
     background-color: #FFFFCC;
 
-    margin: 20px;
+    margin: 10px;
     border: #ccc 1px solid;
 }
 
@@ -177,18 +185,18 @@ table tr:first-child th:last-child {
 
 table tr {
     text-align: center;
-    padding-left: 20px;
+    padding-left: 10px;
     background-color: #FFFFCC;
 }
 
 table tr td:first-child {
     text-align: left;
-    padding-left: 20px;
+    padding-left: 10px;
     background-color: #FFFFCC;
 }
 
 table tr td {
-    padding: 18px;
+    padding: 5px;
     border-top: 1px solid #ffffff;
     border-bottom: 1px solid #e0e0e0;
     border-left: 1px solid #e0e0e0;
@@ -222,10 +230,9 @@ table tr:hover td {
 }
 
 #divFinishedTable {
-    width: 200px;
+    width: 150px;
     float: right;
-    margin: 30px 0 0;
-    background-color: #754719;
+
 }
 
 .button {
@@ -263,42 +270,99 @@ table tr:hover td {
 
 #divTasksTable {
     float: left;
+    padding-left: 0%;
 
 }
 
 #divFinishedTasks {
     float: right;
-    margin-bottom: 30px;
+    margin-top: 0px;
+    padding: 0px;
+
 }
 #addTaskName
 {
-background-color: #FFFFCC;
-margin-left: 2%;
-
+    background-color: #FFFFCC;
+    margin-left: 2%;
+    position: relative;
+    margin-top: 30px;
 }
-#addTaskName1
-{
-background-color: #FFFFCC;
-margin-left: 2%;
 
-}
 #addDate
 {
-   background-color: #FFFFCC; 
-   margin-left: 2%;
+    background-color: #FFFFCC;
+    margin-left: 2%;
+    position: relative;
 }
 #addAlarm
 {
-    background-color: #FFFFCC; 
+    background-color: #FFFFCC;
     margin-left: 1%;
+    position: relative;
 }
 #addAlarmDate
 {
-    background-color: #FFFFCC; 
+    background-color: #FFFFCC;
     margin-left: 1%;
+    position: relative;
+
 }
 #addTagName
 {
-    background-color: #FFFFCC; 
+    background-color: #FFFFCC;
     margin-left: 1%;
 }
+
+form {
+
+    padding-left: 0%;
+    margin-right: 15%;
+    margin-left: 40%;
+
+}
+
+#clock {
+    position: relative;
+    width: 200px;
+    z-index: 0;
+    height: 200px;
+    float: right;
+    bottom: 250px;
+    vertical-align: right;
+    right: 80px;
+    background: url("../resources/roundcircle.jepg");
+    list-style: none;
+}
+
+#sec, #min, #hour {
+    position: absolute;
+    width: 20px;
+    height: 600px;
+    top: 0px;
+    left: 200px;
+    bottom: 300px;
+
+    /*left: 285px;*/
+}
+
+#sec {
+    background: url("../resources/sechand.png");
+    z-index: 0;
+}
+
+#min {
+    background: url("../resources/minhand.png");
+    z-index: 0;
+}
+
+#hour {
+    background: url("../resources/hourhand.png");
+    z-index: 0;
+}
+
+p {
+    text-align: center;
+    padding: 5px 0 0 0;
+}
+
+
