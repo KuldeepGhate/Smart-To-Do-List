@@ -2,10 +2,19 @@ $(document).ready(function () {
     var editId = null;
     $("#todoTasks").html(masterList.generateList());
     $("#finishedTasks").html(masterList.generateFinishedList());
+    $("#addTagName").html(masterList.generateTagOptions());
+    $("#sortSelect").html(masterList.generateTagOptions());
 
+    // Refreshes the tasks
     $("#content").click(function () {
         masterList.refresh();
         $("#finishedTasks").html(masterList.generateFinishedList());
+    });
+
+    // After clicking the sort button
+    $("#sortTasks").click(function () {
+        masterList.switchList($("#sortSelect").val());
+        $("#todoTasks").html(masterList.generateList());
     });
 
     // After clicking the add button
@@ -41,16 +50,11 @@ $(document).ready(function () {
          * INSERT AJAX CALLS TO PHP HERE
          */
 
-         alert("here");
-         $.getJSON("tasks.json", function(tasks_json){
-            tasks_json.tasks.push({"taskId":newTask.id,"taskName":newTaskName,"dueDate":newDueDate,"tag":newTag});
-            //$.post("tasks.php", {json : JSON.stringify(tasks_json)});
-         });
     });
 
     // After clicking the edit button
     $("#editTask").click(function () {
-        var taskToEdit;
+        var taskToEdit = null;
         masterList.editing = true;
 
         $("#todoTasks tr").each(function (i, row) {
@@ -110,8 +114,8 @@ $(document).ready(function () {
  * Resets the form after editing
  */
 function editingReset() {
-    $("#addTask").text("Add item");
-    $("#removeTask").text("Remove item");
+    $("#addTask").text("Add Task");
+    $("#removeTask").text("Remove Task");
     $("#addTaskName").val("");
     $("#addTagName").val("");
 }
