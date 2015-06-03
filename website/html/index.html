@@ -42,10 +42,10 @@
 
             <!-- Add Form -->
             <form id="addTaskForm">
-                <label for="addTaskName">Task Name:</label><input type='text' id='addTaskName' name='taskName' size="50"><br><br>
+                <label for="addTaskName">Task Name:</label><input type='text' id='addTaskName' name='taskName' size="35"><br><br>
                 <label for="addDate">Due Date:</label><input type='datetime-local' id='addDate' placeholder='Select Date' name='dueDate'><br><br>
                 <label for="addAlarm">Alarm:</label><input type='checkbox' id='addAlarm' name='yes' value='true'><br><br>
-                <label for="addAlarmDate">How long before would you like the alarm?</label><input type='number' id='addAlarmDate' name='time' min='1' max='60' size="10">
+                <label for="addAlarmDate">How far in advance?</label><input type='number' id='addAlarmDate' name='time' min='1' max='60' size="10">
                 <select id='timeSelect'>
                     <option value='hours'>Hours</option>
                     <option value='minutes'>Minutes</option>
@@ -53,13 +53,6 @@
                 <label for="addTagName">Tag:</label><select id="addTagName">
             </select><br>
             </form>
-
-            <!-- To do list -->
-            <div id="divFinishedTable">
-                <!-- cellspacing='0' is important, must stay -->
-                <table id="finishedTasks" cellspacing='0'>
-                </table>
-            </div>
 
             <!-- Buttons -->
             <form id="buttonForm">
@@ -69,6 +62,14 @@
                 <a id="sortTasks" class="button">Sort Tasks</a>
                 <label for="sortSelect">Tag to sort by:</label><select id="sortSelect"></select>
             </form>
+
+
+            <!-- To do list -->
+            <div id="divFinishedTable">
+                <!-- cellspacing='0' is important, must stay -->
+                <table id="finishedTasks" cellspacing='0'>
+                </table>
+            </div>
 
         </div>
     </div>

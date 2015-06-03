@@ -175,6 +175,14 @@ function TasksLists() {
     this.refresh = function () {
         for (var i = 0; i < this.allTasks.length; i++) {
             setPriority(this.allTasks[i]);
+            console.log(this.allTasks[i].alarmTime);
+            var now = Math.round(new Date().getTime() / 1000.0);
+            console.log(now);
+
+            if (this.allTasks[i].alarmTime > now) {
+                console.log("FAILLLLLLL");
+                prompt("ALARM FOR " + this.allTasks[i].taskName);
+            }
         }
     };
 

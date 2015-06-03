@@ -2,9 +2,6 @@
     font-weight: normal;
     font-family: sans-serif;
     text-decoration: none;
-    margin: 0;
-    padding: 0;
-
 }
 
 body {
@@ -48,7 +45,7 @@ h2 {
 }
 
 #container {
-    margin: 5% 5%;
+    margin: 2% 2%;
 }
 
 #header {
@@ -266,7 +263,7 @@ table tr:hover td {
     text-shadow: #A0522D;
     border: 4px outset #AD5C33;
 
-    margin-right: 5%;
+    margin-right: 2%;
     margin-top: 5%;
     margin-left: 10%;
 }
@@ -287,9 +284,8 @@ table tr:hover td {
 
 }
 
-#divFinishedTasks {
-    float: right;
-    margin-top: 0;
+#divFinishedTable {
+    margin-top: -200px;
     padding: 0;
 
 }
@@ -328,6 +324,11 @@ table tr:hover td {
     background-color: #FFFFCC;
 }
 
+#buttonForm {
+    width: 40%;
+    margin-right: 0;
+}
+
 form {
     padding-left: 0;
     margin-right: 15%;
@@ -346,23 +347,35 @@ label {
 
 #clock {
     position: relative;
-    margin-right: 50px;
+    margin-top: 160px;
     width: 200px;
     z-index: 0;
     height: 200px;
     float: right;
     bottom: 250px;
-    right: 80px;
+    right: 50px;
     list-style: none;
 }
 
 #sec, #min, #hour {
     position: absolute;
+    left: 150px;
+}
+
+#sec {
+    width: 24px;
+    height: 369px;
+}
+
+#min {
     width: 20px;
-    height: 600px;
-    top: 0;
-    left: 200px;
-    bottom: 300px;
+    height: 365px;
+}
+
+#hour {
+    width: 25px;
+    height: 228px;
+    top: 70px;
 }
 
 #sec {

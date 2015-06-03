@@ -23,7 +23,7 @@ function Task(taskName, tag, dueDate, alarm) {
     this.priority = setPriority(this);
 
     if (alarm) {
-        this.alarmTime = this.dueDate - alarm;
+        this.alarmTime = Math.round(alarm / 1000);
     }
 }
 

@@ -5,10 +5,9 @@ $(document).ready(function () {
     $("#addTagName").html(masterList.generateTagOptions());
     $("#sortSelect").html(masterList.generateTagOptions());
 
-    $("#content").click(function () {
+    window.setInterval(function () {
         masterList.refresh();
-        $("#finishedTasks").html(masterList.generateFinishedList());
-    });
+    }, 1000);
 
     // After clicking the sort button
     $("#sortTasks").click(function () {
@@ -90,7 +89,7 @@ $(document).ready(function () {
         }
 
         $("#todoTasks tr").each(function (i, row) {
-           //Reference all the stuff I need
+            //Reference all the stuff I need
             var rowHtml = $(row);
             var check = rowHtml.find("input:checked");
 
