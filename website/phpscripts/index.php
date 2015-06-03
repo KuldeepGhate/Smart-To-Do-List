@@ -65,6 +65,7 @@
     </div>
 
     <?php
+    /*
     $doc = new DOMDocument();
     $doc->load('task.xml');
 
@@ -80,7 +81,7 @@
         $title = $titles->item(0)->nodeValue;
 
         echo "$title - $author - $publisher\n";
-    }
+    }*/
     ?>
 
     <div id="footer">

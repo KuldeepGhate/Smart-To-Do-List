@@ -40,6 +40,12 @@ $(document).ready(function () {
         /*
          * INSERT AJAX CALLS TO PHP HERE
          */
+
+         alert("here");
+         $.getJSON("tasks.json", function(tasks_json){
+            tasks_json.tasks.push({"taskId":newTask.id,"taskName":newTaskName,"dueDate":newDueDate,"tag":newTag});
+            //$.post("tasks.php", {json : JSON.stringify(tasks_json)});
+         });
     });
 
     // After clicking the edit button
