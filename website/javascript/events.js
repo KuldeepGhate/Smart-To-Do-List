@@ -5,6 +5,17 @@ $(document).ready(function () {
     $("#addTagName").html(masterList.generateTagOptions());
     $("#sortSelect").html(masterList.generateTagOptions());
 
+
+    $.ajax({
+        url: '../phpscripts/functionSwitch.php',
+        data: {action: 'load'},
+        type: 'post',
+        success: function (output) {
+            console.log("Return: " + output);
+        }
+    });
+
+
     // Refreshes the tasks
     $("#content").click(function () {
         masterList.refresh();
@@ -114,9 +125,17 @@ $(document).ready(function () {
                 var finishedTaskId = $(rowHtml).attr("id");
                 masterList.finishTask(finishedTaskId);
 
-                /*
-                 * INSERT AJAX CALLS TO PHP HERE
-                 */
+                $.ajax({
+                    url: '../phpscripts/functionSwitch.php',
+                    data: {
+                        action: 'finish',
+                        removeId: finishedTaskId
+                    },
+                    type: 'post',
+                    success: function () {
+                        console.log("Finish of " + finishedTaskId + " successful.");
+                    }
+                });
             });
         });
         $("#todoTasks").html(masterList.generateList());
