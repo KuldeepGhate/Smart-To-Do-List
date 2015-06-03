@@ -1,7 +1,6 @@
 <?php
 include 'loadJSON.php';
 include 'pushToJSON.php';
-include 'editJSON.php';
 include 'removeFromJSON.php';
 
 if (isset($_POST['action']) && !empty($_POST['action'])) {
@@ -15,9 +14,6 @@ if (isset($_POST['action']) && !empty($_POST['action'])) {
             break;
         case 'finish' :
             echo removeFromJSON($_POST['removeId']);
-            break;
-        case 'edit' :
-            editJSON($_POST['jsonPush'], $_POST['editId']);
             break;
     }
 }

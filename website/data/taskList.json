@@ -62,13 +62,6 @@
       "id": "8",
       "dueDate": "NaN",
       "alarmTime": "false"
-    },
-    {
-      "taskName": "testing",
-      "tag": "Life",
-      "id": "5",
-      "dueDate": "NaN",
-      "alarmTime": "false"
     }
   ]
 }

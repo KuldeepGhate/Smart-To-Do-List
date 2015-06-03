@@ -1,6 +1,7 @@
 $(document).ready(function () {
     var editId = null;
 
+    // Initializes the masterList and the html
     var jsonOutput;
     $.when($.ajax({
         url: '../phpscripts/functionSwitch.php',
@@ -17,13 +18,11 @@ $(document).ready(function () {
         for (var i in taskArray) {
             var newTask = new Task(taskArray[i].taskName, taskArray[i].tag, taskArray[i].dueDate, taskArray[i].alarmTime);
             masterList.addTask(newTask);
-            console.log(newTask);
         }
         $("#todoTasks").html(masterList.generateList());
         $("#finishedTasks").html(masterList.generateFinishedList());
         $("#addTagName").html(masterList.generateTagOptions());
         $("#sortSelect").html(masterList.generateTagOptions());
-        console.log(masterList);
     });
 
     // Refreshes the tasks
@@ -143,7 +142,7 @@ $(document).ready(function () {
                     },
                     type: 'post',
                     success: function (output) {
-                        console.log("Finish of " + output + " successful.");
+                        console.log(output);
                     }
                 });
             });
