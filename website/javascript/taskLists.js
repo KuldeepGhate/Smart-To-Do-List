@@ -179,6 +179,20 @@ function TasksLists() {
     };
 
     /**
+     * Generates the tag options
+     *
+     * @returns {string}: The html for the tag options
+     */
+    this.generateTagOptions = function () {
+        var optionsHtml = "";
+
+        for (var i = 0; i < this.allTags.length; i++) {
+            optionsHtml = optionsHtml.concat("<option value='" + this.allTags[i].tagName + "'>" + this.allTags[i].tagName + "</option>");
+        }
+        return optionsHtml;
+    };
+
+    /**
      * Generates the to do list based on the current list
      *
      * @returns {string}: The html for the list

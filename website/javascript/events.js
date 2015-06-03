@@ -2,10 +2,18 @@ $(document).ready(function () {
     var editId = null;
     $("#todoTasks").html(masterList.generateList());
     $("#finishedTasks").html(masterList.generateFinishedList());
+    $("#addTagName").html(masterList.generateTagOptions());
+    $("#sortSelect").html(masterList.generateTagOptions());
 
+    // Refreshes the tasks
     $("#content").click(function () {
         masterList.refresh();
         $("#finishedTasks").html(masterList.generateFinishedList());
+    });
+
+    // After clicking the sort button
+    $("#sortTasks").click(function () {
+
     });
 
     // After clicking the add button
@@ -44,7 +52,7 @@ $(document).ready(function () {
 
     // After clicking the edit button
     $("#editTask").click(function () {
-        var taskToEdit;
+        var taskToEdit = null;
         masterList.editing = true;
 
         $("#todoTasks tr").each(function (i, row) {
@@ -104,8 +112,8 @@ $(document).ready(function () {
  * Resets the form after editing
  */
 function editingReset() {
-    $("#addTask").text("Add item");
-    $("#removeTask").text("Remove item");
+    $("#addTask").text("Add Task");
+    $("#removeTask").text("Remove Task");
     $("#addTaskName").val("");
     $("#addTagName").val("");
 }
