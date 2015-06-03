@@ -112,8 +112,8 @@ $(document).ready(function () {
  * Resets the form after editing
  */
 function editingReset() {
-    $("#addTask").text("Add item");
-    $("#removeTask").text("Remove item");
+    $("#addTask").text("Add Task");
+    $("#removeTask").text("Remove Task");
     $("#addTaskName").val("");
     $("#addTagName").val("");
 }
