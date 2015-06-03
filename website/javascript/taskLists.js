@@ -177,11 +177,11 @@ function TasksLists() {
             setPriority(this.allTasks[i]);
             console.log(this.allTasks[i].alarmTime);
             var now = Math.round(new Date().getTime() / 1000.0);
-            console.log(now);
 
-            if (this.allTasks[i].alarmTime > now) {
-                console.log("FAILLLLLLL");
-                prompt("ALARM FOR " + this.allTasks[i].taskName);
+
+            if (this.allTasks[i].alarmTime < now && this.allTasks[i].alarmTime && !this.allTasks[i].alarmDone) {
+                alert("Alarm for: " + this.allTasks[i].taskName);
+                this.allTasks[i].alarmDone = true;
             }
         }
     };

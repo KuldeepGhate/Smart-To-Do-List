@@ -13,6 +13,7 @@ function Task(taskName, tag, dueDate, alarm) {
     this.tag = tag;
     this.id = -1;
     this.alarmTime = false;
+    this.alarmDone = false;
 
     this.dueDate = dueDate;
     if (this.dueDate == null) {
