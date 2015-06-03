@@ -125,9 +125,17 @@ $(document).ready(function () {
                 var finishedTaskId = $(rowHtml).attr("id");
                 masterList.finishTask(finishedTaskId);
 
-                /*
-                 * INSERT AJAX CALLS TO PHP HERE
-                 */
+                $.ajax({
+                    url: '../phpscripts/functionSwitch.php',
+                    data: {
+                        action: 'finish',
+                        removeId: finishedTaskId
+                    },
+                    type: 'post',
+                    success: function () {
+                        console.log("Finish of " + finishedTaskId + " successful.");
+                    }
+                });
             });
         });
         $("#todoTasks").html(masterList.generateList());

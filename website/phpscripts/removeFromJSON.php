@@ -1,8 +1,10 @@
 <?php
 function removeFromJSON($id) {
-    $tempArray = file_get_contents('../data/taskList.json');
-    $tasks = $tempArray["tasks"];
-    foreach
-        $taskToDelete = $tasks["id": $id];
-    unset($tempArray["tasks"]);
+    $jsonArray = file_get_contents('../data/taskList.json');
+    foreach ($jsonArray->tasks as $task) {
+        if ($task->id == $id) {
+            unset($jsonArray["tasks"]);
+            break;
+        }
+    }
 }
