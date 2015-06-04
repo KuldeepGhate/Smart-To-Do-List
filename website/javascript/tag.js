@@ -16,7 +16,6 @@ function Tag(tagName, tagColor) {
      * @returns {boolean}
      */
     this.match = function (tag) {
-        var matches;
         var matchString;
         if (tag.tagName) {
             matchString = tag.tagName;

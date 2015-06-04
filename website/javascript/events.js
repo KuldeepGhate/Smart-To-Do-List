@@ -2,8 +2,6 @@ $(document).ready(function () {
     var editId = null;
     $("#todoTasks").html(masterList.generateList());
     $("#finishedTasks").html(masterList.generateFinishedList());
-    $("#addTagName").html(masterList.generateTagOptions());
-    $("#sortSelect").html(masterList.generateTagOptions());
 
     window.setInterval(function () {
         masterList.refresh();
@@ -51,7 +49,7 @@ $(document).ready(function () {
 
     // After clicking the edit button
     $("#editTask").click(function () {
-        var taskToEdit;
+        var taskToEdit = null;
         masterList.editing = true;
 
         $("#todoTasks tr").each(function (i, row) {

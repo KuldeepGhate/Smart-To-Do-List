@@ -57,7 +57,7 @@ h2 {
 }
 
 #todo {
-    margin-left: 0%;
+    margin-left: 0;
 }
 
 #todo table input {
@@ -356,6 +356,33 @@ label {
     right: 50px;
     list-style: none;
 }
+#addTaskName
+{
+background-color: #FFFFCC;
+margin-left: 2%;
+}
+
+}
+#addDate
+{
+   background-color: #FFFFCC; 
+   margin-left: 2%;
+}
+#addAlarm
+{
+    background-color: #FFFFCC; 
+    margin-left: 1%;
+}
+#addAlarmDate
+{
+    background-color: #FFFFCC; 
+    margin-left: 1%;
+}
+#addTagName
+{
+    background-color: #FFFFCC; 
+    margin-left: 1%;
+}
 
 #sec, #min, #hour {
     position: absolute;
@@ -363,11 +390,15 @@ label {
 }
 
 #sec {
+    background: url("../resources/sechand.png");
+    z-index: 0;
     width: 24px;
     height: 369px;
 }
 
 #min {
+    background: url("../resources/minhand.png");
+    z-index: 0;
     width: 20px;
     height: 365px;
 }
@@ -376,19 +407,6 @@ label {
     width: 25px;
     height: 228px;
     top: 70px;
-}
-
-#sec {
-    background: url("../resources/sechand.png");
-    z-index: 0;
-}
-
-#min {
-    background: url("../resources/minhand.png");
-    z-index: 0;
-}
-
-#hour {
     background: url("../resources/hourhand.png");
     z-index: 0;
 }
