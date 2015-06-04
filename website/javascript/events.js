@@ -2,6 +2,8 @@ $(document).ready(function () {
     var editId = null;
     $("#todoTasks").html(masterList.generateList());
     $("#finishedTasks").html(masterList.generateFinishedList());
+    $("#addTagName").html(masterList.generateTagOptions());
+    $("#sortSelect").html(masterList.generateTagOptions());
 
     window.setInterval(function () {
         masterList.refresh();

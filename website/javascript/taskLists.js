@@ -174,12 +174,9 @@ function TasksLists() {
     this.refresh = function () {
         for (var i = 0; i < this.allTasks.length; i++) {
             setPriority(this.allTasks[i]);
-            console.log(this.allTasks[i].alarmTime);
             var now = Math.round(new Date().getTime() / 1000.0);
-
-
             if (this.allTasks[i].alarmTime < now && this.allTasks[i].alarmTime && !this.allTasks[i].alarmDone) {
-                alert("Alarm for: " + this.allTasks[i].taskName);
+                // alert("Alarm for: " + this.allTasks[i].taskName);
                 this.allTasks[i].alarmDone = true;
             }
         }
@@ -193,9 +190,13 @@ function TasksLists() {
     this.generateTagOptions = function () {
         var optionsHtml = "";
 
+        console.log("generating tags");
+
         for (var i = 0; i < this.allTags.length; i++) {
             optionsHtml = optionsHtml.concat("<option value='" + this.allTags[i].tagName + "'>" + this.allTags[i].tagName + "</option>");
         }
+        console.log(optionsHtml);
+
         return optionsHtml;
     };
 

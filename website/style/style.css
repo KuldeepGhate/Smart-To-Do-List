@@ -54,13 +54,10 @@ h2 {
 
 #content {
     min-height: 550px;
-}
-
-#todo {
     margin-left: 0;
 }
 
-#todo table input {
+#content table input {
     margin-top: 25px;
     margin-bottom: 25px;
     margin-left: auto;
@@ -68,14 +65,14 @@ h2 {
     padding: 10px;
 }
 
-#todo form input {
+#content form input {
     margin-bottom: 10px;
     margin-left: auto;
     margin-right: auto;
     padding: 3px;
 }
 
-#todo form a {
+#content form a {
     margin-left: 1%;
     padding: 2%;
     font-weight: bold;
@@ -84,7 +81,7 @@ h2 {
     border-radius: 100%;
 }
 
-#todo label {
+#content label {
     background-image: url("../resources/woodbutton.jpeg");
     border: 2px solid black;
     padding-right: 10px;
@@ -92,7 +89,7 @@ h2 {
     padding-bottom: 5px;
 }
 
-#todo .tag {
+#content .tag {
     display: inline-block;
     margin-left: 1%;
     padding: 5px;
@@ -100,19 +97,19 @@ h2 {
     border: 2px solid black;
 }
 
-#todo .general {
+#content .general {
     background-color: white;
 }
 
-#todo .school {
+#content .school {
     background-color: crimson;
 }
 
-#todo .work {
+#content .work {
     background-color: greenyellow;
 }
 
-#todo .life {
+#content .life {
     background-color: #7BAAF7;
 }
 
@@ -356,31 +353,29 @@ label {
     right: 50px;
     list-style: none;
 }
-#addTaskName
-{
-background-color: #FFFFCC;
-margin-left: 2%;
+
+#addTaskName {
+    background-color: #FFFFCC;
+    margin-left: 2%;
 }
 
+#addDate {
+    background-color: #FFFFCC;
+    margin-left: 2%;
 }
-#addDate
-{
-   background-color: #FFFFCC; 
-   margin-left: 2%;
-}
-#addAlarm
-{
-    background-color: #FFFFCC; 
+
+#addAlarm {
+    background-color: #FFFFCC;
     margin-left: 1%;
 }
-#addAlarmDate
-{
-    background-color: #FFFFCC; 
+
+#addAlarmDate {
+    background-color: #FFFFCC;
     margin-left: 1%;
 }
-#addTagName
-{
-    background-color: #FFFFCC; 
+
+#addTagName {
+    background-color: #FFFFCC;
     margin-left: 1%;
 }
 
