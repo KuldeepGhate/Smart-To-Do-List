@@ -131,7 +131,7 @@ function editingReset() {
  * Takes the alarm parameters from the add form and transforms it for a task
  *
  * @returns {*}: if the user wants an alarm it returns the alarm time
- *               if the user doesn"t want an alarm it returns false
+ *               if the user doesn't want an alarm it returns false
  */
 function getAlarmTime() {
     if ($("#addAlarm:checkbox:checked").length > 0) {
