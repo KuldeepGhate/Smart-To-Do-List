@@ -34,19 +34,22 @@ $(document).ready(function () {
             newTask.id = editId;
             editId = null;
             editingReset();
-
-            /*
-             * INSERT AJAX CALL HERE
-             */
         }
         masterList.addTask(newTask);
 
         $("#addTaskForm")[0].reset();
         $("#todoTasks").html(masterList.generateList());
 
-        /*
-         * INSERT AJAX CALLS TO PHP HERE
-         */
+        $.ajax({
+            url: '../phpscripts/jsonPush.php',
+            data: {
+                push: masterList.packageForJson()
+            },
+            type: 'post',
+            success: function (output) {
+                console.log("JSON that was pushed:\n" + output);
+            }
+        });
     });
 
     // After clicking the edit button
@@ -77,7 +80,7 @@ $(document).ready(function () {
         $("#removeTask").text("Cancel Edit");
     });
 
-    // After selecting a task and clicking the remove button
+// After selecting a task and clicking the remove button
     $("#removeTask").click(function (e) {
         e.preventDefault();
 
@@ -96,14 +99,21 @@ $(document).ready(function () {
             check.each(function () {
                 var finishedTaskId = $(rowHtml).attr("id");
                 masterList.finishTask(finishedTaskId);
-
-                /*
-                 * INSERT AJAX CALLS TO PHP HERE
-                 */
             });
         });
         $("#todoTasks").html(masterList.generateList());
         $("#finishedTasks").html(masterList.generateFinishedList());
+
+        $.ajax({
+            url: '../phpscripts/jsonPush.php',
+            data: {
+                push: masterList.packageForJson()
+            },
+            type: 'post',
+            success: function (output) {
+                console.log("JSON that was pushed:\n" + output);
+            }
+        });
     });
 });
 

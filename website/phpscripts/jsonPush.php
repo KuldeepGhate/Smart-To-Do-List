@@ -1,4 +1,8 @@
 <?php
-function jsonPush($jsonString) {
-    file_put_contents('../data/taskList.json', json_encode($jsonString));
+if (isset($_POST['push']) && !empty($_POST['push'])) {
+    $jsonObject = $_POST['push'];
+    file_put_contents('../data/taskList.json', $jsonObject);
+    echo $jsonObject;
+} else {
+    echo "Push was empty or invalid!";
 }

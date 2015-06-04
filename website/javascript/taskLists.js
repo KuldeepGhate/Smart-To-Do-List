@@ -169,7 +169,7 @@ function TasksLists() {
     };
 
     /**
-     * Refreshes the tasks in the main list and raises any alarms
+     * Refreshes the tasks in the main list and checks for/ raises any alarms
      */
     this.refresh = function () {
         for (var i = 0; i < this.allTasks.length; i++) {
@@ -229,5 +229,14 @@ function TasksLists() {
             htmlString = htmlString.concat("<tr id='" + task.id + "' class='" + task.priority + "'><td>" + task.taskName + "</td><td>" + task.tag.tagName + "</td></tr>");
         }
         return htmlString;
-    }
+    };
+
+    /**
+     * Generates a JSON object to pass to PHP for storing
+     *
+     * @returns {json}: All the tasks that are stored in the TaskList
+     */
+    this.packageForJson = function () {
+        return JSON.stringify(this.allTasks);
+    };
 }
