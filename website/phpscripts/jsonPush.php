@@ -1,5 +1,5 @@
 <?php
-function pushToJSON($jsonString) {
+function jsonPush($jsonString) {
     $tempArray = json_decode(file_get_contents('../data/taskList.json'), true);
     array_push($tempArray["tasks"], $jsonString);
     file_put_contents('../data/taskList.json', json_encode($tempArray));
