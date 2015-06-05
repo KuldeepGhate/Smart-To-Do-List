@@ -12,20 +12,16 @@ function Task(taskName, tag, dueDate, alarm) {
     this.taskName = taskName;
     this.tag = tag;
     this.id = -1;
-    this.alarmTime = false;
+    this.alarmTime = alarm;
     this.alarmDone = false;
 
     this.dueDate = dueDate;
     if (this.dueDate == null) {
         this.dueDate = 9000000000000;
     }
-    this.dueDate /= 1000;
-    this.dueDate = Math.round(this.dueDate);
+
     this.priority = setPriority(this);
 
-    if (alarm) {
-        this.alarmTime = Math.round(alarm / 1000);
-    }
 }
 
 /**

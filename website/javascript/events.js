@@ -4,7 +4,8 @@ $(document).ready(function () {
     $("#finishedTasks").html(masterList.generateFinishedList());
     $("#addTagName").html(masterList.generateTagOptions());
     $("#sortSelect").html(masterList.generateTagOptions());
-
+     
+    
     window.setInterval(function () {
         masterList.refresh();
     }, 1000);

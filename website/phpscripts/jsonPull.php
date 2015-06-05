@@ -1,4 +1,5 @@
 <?php
-function jsonPull() {
-    return $tempArray = file_get_contents('../data/taskList.json');
-}
+    
+       echo $tempArray = file_get_contents('../data/taskList.json');  
+
+?>
