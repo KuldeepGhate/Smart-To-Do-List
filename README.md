@@ -1,6 +1,3 @@
 #An Interactive To Do List
 
-[Trello](https://trello.com/b/RF2Q2TFQ/coen-276-project)
-=======
-# Smart-To-Do-List
-A multi-functional interacting to do list web app with a rich user experience.
+A To-do list web app that users can use to note tasks, set reminders and sort the task list based on various parameters. Each task can be assigned a tag and priority level which enables sorting and grouping of the list. A complex JavaScript code effectively handles the data structures and core functionality of the app.
